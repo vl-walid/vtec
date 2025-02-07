@@ -1,0 +1,37 @@
+name: Deploy and Develop Next.js Site
+
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Install Dependencies with Legacy Peer Deps
+        run: npm install --legacy-peer-deps
+
+      - name: Fix Execute Permissions for Next.js Binary
+        run: chmod +x node_modules/.bin/next
+
+      - name: Run Next.js Development Server
+        run: npx next dev
