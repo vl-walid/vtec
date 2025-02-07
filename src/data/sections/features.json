@@ -1,0 +1,38 @@
+[
+    {
+        "id": 1,
+        "icon": "pe-7s-car",
+        "title": "Chiptuning",
+        "content": "Leistungssteigerungen für Pkw, Nutzfahrzeuge, Transporter, Wohnmobile, Lkw und Agrarfahrzeuge."
+    },
+    {
+        "id": 2,
+        "icon": "pe-7s-graph2",
+        "title": "Verbrauchsoptimierung",
+        "content": "Verbrauchsoptimierungen für Pkw, Nutzfahrzeuge, Transporter, Wohnmobile, Lkw und Agrarfahrzeuge."
+    },
+    {
+        "id": 3,
+        "icon": "pe-7s-gleam",
+        "title": "Leistungsmessung",
+        "content": "…für jedes Fahrzeug einen realen Leistungsnachweis anbieten, durch ein einzigartiges System messen wir “was wirklich auf der Straße ankommt”!"
+    },
+    {
+        "id": 4,
+        "icon": "pe-7s-tools",
+        "title": "AGR Deaktivierung",
+        "content": "AGR-Ventil Deaktivierung für Pkw, Nutzfahrzeuge, Transporter, Wohnmobile, Lkw und Agrarfahrzeuge."
+    },
+    {
+        "id": 5,
+        "icon": "pe-7s-settings",
+        "title": "DPF Deaktivierung",
+        "content": "Wir sind in der Lage bei fast allen PKW, LKW, Baumaschinen und Traktoren den Diesel Partikelfilter zu deaktivieren."
+    },
+    {
+        "id": 6,
+        "icon": "pe-7s-plug",
+        "title": "AdBlue Deaktivierung",
+        "content": "Wir sind in der Lage bei fast allen PKW, LKW, Baumaschinen und Traktoren das AdBlue System zu deaktivieren."
+    }
+]

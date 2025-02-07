@@ -1,0 +1,14 @@
+# Enable mod_rewrite
+RewriteEngine On
+
+# Redirect to index.html for React routing
+RewriteBase /Vtec_front_end/  # Adjust this path if your app is in a subdirectory
+RewriteRule ^index\.html$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /Vtec_front_end/index.html [L]
+
+# Set directory permissions (optional)
+<IfModule mod_headers.c>
+  Header set Access-Control-Allow-Origin "*"
+</IfModule>

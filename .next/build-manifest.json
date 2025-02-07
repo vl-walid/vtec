@@ -1,0 +1,234 @@
+{
+  "polyfillFiles": [
+    "static/chunks/polyfills-42372ed130431b0a.js"
+  ],
+  "devFiles": [],
+  "ampDevFiles": [],
+  "lowPriorityFiles": [
+    "static/lje6wd0GV9edt2uFmLjuX/_buildManifest.js",
+    "static/lje6wd0GV9edt2uFmLjuX/_ssgManifest.js"
+  ],
+  "rootMainFiles": [],
+  "rootMainFilesTree": {},
+  "pages": {
+    "/": [
+      "static/chunks/webpack-93d35450c3753578.js",
+      "static/chunks/framework-b96261d959dd50e7.js",
+      "static/chunks/main-4c60a6aed60f8f3f.js",
+      "static/chunks/909-5222d2567c0e7e32.js",
+      "static/chunks/965-3c6b8c4668f9e821.js",
+      "static/chunks/667-38f685df49a2ef43.js",
+      "static/chunks/447-b80b7dade067e7fc.js",
+      "static/chunks/31-ff615626f64bb021.js",
+      "static/chunks/pages/index-9365ff2de11d18b4.js"
+    ],
+    "/404": [
+      "static/chunks/webpack-93d35450c3753578.js",
+      "static/chunks/framework-b96261d959dd50e7.js",
+      "static/chunks/main-4c60a6aed60f8f3f.js",
+      "static/chunks/pages/404-61b71ba76c06e1a9.js"
+    ],
+    "/_app": [
+      "static/chunks/webpack-93d35450c3753578.js",
+      "static/chunks/framework-b96261d959dd50e7.js",
+      "static/chunks/main-4c60a6aed60f8f3f.js",
+      "static/css/4e7ad5f05d3e0aa8.css",
+      "static/chunks/pages/_app-823ddde20df7f856.js"
+    ],
+    "/_error": [
+      "static/chunks/webpack-93d35450c3753578.js",
+      "static/chunks/framework-b96261d959dd50e7.js",
+      "static/chunks/main-4c60a6aed60f8f3f.js",
+      "static/chunks/pages/_error-bb091f187c2001db.js"
+    ],
+    "/admin/admin": [
+      "static/chunks/webpack-93d35450c3753578.js",
+      "static/chunks/framework-b96261d959dd50e7.js",
+      "static/chunks/main-4c60a6aed60f8f3f.js",
+      "static/chunks/909-5222d2567c0e7e32.js",
+      "static/chunks/965-3c6b8c4668f9e821.js",
+      "static/chunks/149-ac9c3ec1ca1ab5b0.js",
+      "static/chunks/447-b80b7dade067e7fc.js",
+      "static/chunks/pages/admin/admin-b19e781de4227c9e.js"
+    ],
+    "/admin/blog-details-hinzufuegen/[id]": [
+      "static/chunks/webpack-93d35450c3753578.js",
+      "static/chunks/framework-b96261d959dd50e7.js",
+      "static/chunks/main-4c60a6aed60f8f3f.js",
+      "static/chunks/909-5222d2567c0e7e32.js",
+      "static/chunks/965-3c6b8c4668f9e821.js",
+      "static/chunks/447-b80b7dade067e7fc.js",
+      "static/chunks/pages/admin/blog-details-hinzufuegen/[id]-a356f14ff5dfc9f2.js"
+    ],
+    "/admin/blog/news-beitraege-details/[id]": [
+      "static/chunks/webpack-93d35450c3753578.js",
+      "static/chunks/framework-b96261d959dd50e7.js",
+      "static/chunks/main-4c60a6aed60f8f3f.js",
+      "static/chunks/909-5222d2567c0e7e32.js",
+      "static/chunks/447-b80b7dade067e7fc.js",
+      "static/chunks/pages/admin/blog/news-beitraege-details/[id]-c7cb919bf4c57e85.js"
+    ],
+    "/admin/car/car-tuning/[car_id]": [
+      "static/chunks/webpack-93d35450c3753578.js",
+      "static/chunks/framework-b96261d959dd50e7.js",
+      "static/chunks/main-4c60a6aed60f8f3f.js",
+      "static/chunks/909-5222d2567c0e7e32.js",
+      "static/chunks/762-e01b398ee1a481b7.js",
+      "static/chunks/pages/admin/car/car-tuning/[car_id]-f71bc15dcb7dac8b.js"
+    ],
+    "/admin/car/new-car": [
+      "static/chunks/webpack-93d35450c3753578.js",
+      "static/chunks/framework-b96261d959dd50e7.js",
+      "static/chunks/main-4c60a6aed60f8f3f.js",
+      "static/chunks/909-5222d2567c0e7e32.js",
+      "static/chunks/762-e01b398ee1a481b7.js",
+      "static/chunks/pages/admin/car/new-car-af037b4b56bfb2e5.js"
+    ],
+    "/admin/car/new-car/[engine_id]": [
+      "static/chunks/webpack-93d35450c3753578.js",
+      "static/chunks/framework-b96261d959dd50e7.js",
+      "static/chunks/main-4c60a6aed60f8f3f.js",
+      "static/chunks/909-5222d2567c0e7e32.js",
+      "static/chunks/762-e01b398ee1a481b7.js",
+      "static/chunks/pages/admin/car/new-car/[engine_id]-a94e82c0c370b99f.js"
+    ],
+    "/admin/car/search-car": [
+      "static/chunks/webpack-93d35450c3753578.js",
+      "static/chunks/framework-b96261d959dd50e7.js",
+      "static/chunks/main-4c60a6aed60f8f3f.js",
+      "static/chunks/909-5222d2567c0e7e32.js",
+      "static/chunks/762-e01b398ee1a481b7.js",
+      "static/chunks/pages/admin/car/search-car-73fb42c7adbec134.js"
+    ],
+    "/admin/car/tuning-eigenschaften-hinzufuegen": [
+      "static/chunks/webpack-93d35450c3753578.js",
+      "static/chunks/framework-b96261d959dd50e7.js",
+      "static/chunks/main-4c60a6aed60f8f3f.js",
+      "static/chunks/909-5222d2567c0e7e32.js",
+      "static/chunks/965-3c6b8c4668f9e821.js",
+      "static/chunks/762-e01b398ee1a481b7.js",
+      "static/chunks/pages/admin/car/tuning-eigenschaften-hinzufuegen-6f6d65217d1ec501.js"
+    ],
+    "/admin/car/tuning-eigenschaften/tuning-eigenschaften": [
+      "static/chunks/webpack-93d35450c3753578.js",
+      "static/chunks/framework-b96261d959dd50e7.js",
+      "static/chunks/main-4c60a6aed60f8f3f.js",
+      "static/chunks/909-5222d2567c0e7e32.js",
+      "static/chunks/762-e01b398ee1a481b7.js",
+      "static/chunks/pages/admin/car/tuning-eigenschaften/tuning-eigenschaften-6f85ac75886ea37e.js"
+    ],
+    "/admin/new-admin": [
+      "static/chunks/webpack-93d35450c3753578.js",
+      "static/chunks/framework-b96261d959dd50e7.js",
+      "static/chunks/main-4c60a6aed60f8f3f.js",
+      "static/chunks/909-5222d2567c0e7e32.js",
+      "static/chunks/965-3c6b8c4668f9e821.js",
+      "static/chunks/149-ac9c3ec1ca1ab5b0.js",
+      "static/chunks/447-b80b7dade067e7fc.js",
+      "static/chunks/pages/admin/new-admin-467f34088d29bce2.js"
+    ],
+    "/admin/new-blog": [
+      "static/chunks/webpack-93d35450c3753578.js",
+      "static/chunks/framework-b96261d959dd50e7.js",
+      "static/chunks/main-4c60a6aed60f8f3f.js",
+      "static/chunks/909-5222d2567c0e7e32.js",
+      "static/chunks/762-e01b398ee1a481b7.js",
+      "static/chunks/pages/admin/new-blog-bec923167db909bc.js"
+    ],
+    "/blog-details/[id]": [
+      "static/chunks/webpack-93d35450c3753578.js",
+      "static/chunks/framework-b96261d959dd50e7.js",
+      "static/chunks/main-4c60a6aed60f8f3f.js",
+      "static/chunks/909-5222d2567c0e7e32.js",
+      "static/chunks/965-3c6b8c4668f9e821.js",
+      "static/chunks/447-b80b7dade067e7fc.js",
+      "static/chunks/pages/blog-details/[id]-e9562666b695a480.js"
+    ],
+    "/chiptuning/[id]": [
+      "static/chunks/webpack-93d35450c3753578.js",
+      "static/chunks/framework-b96261d959dd50e7.js",
+      "static/chunks/main-4c60a6aed60f8f3f.js",
+      "static/chunks/909-5222d2567c0e7e32.js",
+      "static/chunks/965-3c6b8c4668f9e821.js",
+      "static/chunks/273-611f4e4e8d039710.js",
+      "static/chunks/447-b80b7dade067e7fc.js",
+      "static/chunks/pages/chiptuning/[id]-3173371aec36415c.js"
+    ],
+    "/demos/demos": [
+      "static/chunks/webpack-93d35450c3753578.js",
+      "static/chunks/framework-b96261d959dd50e7.js",
+      "static/chunks/main-4c60a6aed60f8f3f.js",
+      "static/chunks/909-5222d2567c0e7e32.js",
+      "static/chunks/965-3c6b8c4668f9e821.js",
+      "static/chunks/667-38f685df49a2ef43.js",
+      "static/chunks/447-b80b7dade067e7fc.js",
+      "static/chunks/31-ff615626f64bb021.js",
+      "static/chunks/pages/demos/demos-273dc3daf9ea1e46.js"
+    ],
+    "/kontakt/kontakt": [
+      "static/chunks/webpack-93d35450c3753578.js",
+      "static/chunks/framework-b96261d959dd50e7.js",
+      "static/chunks/main-4c60a6aed60f8f3f.js",
+      "static/chunks/909-5222d2567c0e7e32.js",
+      "static/chunks/149-ac9c3ec1ca1ab5b0.js",
+      "static/chunks/54-0793d82873d7953d.js",
+      "static/chunks/447-b80b7dade067e7fc.js",
+      "static/chunks/pages/kontakt/kontakt-fd490d53191ede2a.js"
+    ],
+    "/kontakt/partner-werden": [
+      "static/chunks/webpack-93d35450c3753578.js",
+      "static/chunks/framework-b96261d959dd50e7.js",
+      "static/chunks/main-4c60a6aed60f8f3f.js",
+      "static/chunks/909-5222d2567c0e7e32.js",
+      "static/chunks/965-3c6b8c4668f9e821.js",
+      "static/chunks/149-ac9c3ec1ca1ab5b0.js",
+      "static/chunks/241-2076c13d606fbbbe.js",
+      "static/chunks/447-b80b7dade067e7fc.js",
+      "static/css/52a327730e0309f7.css",
+      "static/chunks/pages/kontakt/partner-werden-aaaa96638f4ca29e.js"
+    ],
+    "/news-list/news-list": [
+      "static/chunks/webpack-93d35450c3753578.js",
+      "static/chunks/framework-b96261d959dd50e7.js",
+      "static/chunks/main-4c60a6aed60f8f3f.js",
+      "static/chunks/909-5222d2567c0e7e32.js",
+      "static/chunks/447-b80b7dade067e7fc.js",
+      "static/chunks/pages/news-list/news-list-d6da2a8eec76ddcf.js"
+    ],
+    "/nuetzliche-links/agb-s": [
+      "static/chunks/webpack-93d35450c3753578.js",
+      "static/chunks/framework-b96261d959dd50e7.js",
+      "static/chunks/main-4c60a6aed60f8f3f.js",
+      "static/chunks/909-5222d2567c0e7e32.js",
+      "static/chunks/447-b80b7dade067e7fc.js",
+      "static/chunks/pages/nuetzliche-links/agb-s-03888773ace9d830.js"
+    ],
+    "/nuetzliche-links/daten-shutz-erklaerung": [
+      "static/chunks/webpack-93d35450c3753578.js",
+      "static/chunks/framework-b96261d959dd50e7.js",
+      "static/chunks/main-4c60a6aed60f8f3f.js",
+      "static/chunks/909-5222d2567c0e7e32.js",
+      "static/chunks/447-b80b7dade067e7fc.js",
+      "static/chunks/pages/nuetzliche-links/daten-shutz-erklaerung-2afd5f1bf05e6827.js"
+    ],
+    "/nuetzliche-links/impressum": [
+      "static/chunks/webpack-93d35450c3753578.js",
+      "static/chunks/framework-b96261d959dd50e7.js",
+      "static/chunks/main-4c60a6aed60f8f3f.js",
+      "static/chunks/909-5222d2567c0e7e32.js",
+      "static/chunks/447-b80b7dade067e7fc.js",
+      "static/chunks/pages/nuetzliche-links/impressum-6b684ebc460b7841.js"
+    ],
+    "/ueber-uns/ueber-uns": [
+      "static/chunks/webpack-93d35450c3753578.js",
+      "static/chunks/framework-b96261d959dd50e7.js",
+      "static/chunks/main-4c60a6aed60f8f3f.js",
+      "static/chunks/909-5222d2567c0e7e32.js",
+      "static/chunks/241-2076c13d606fbbbe.js",
+      "static/chunks/447-b80b7dade067e7fc.js",
+      "static/css/2969ad1eeb686830.css",
+      "static/chunks/pages/ueber-uns/ueber-uns-db5e5033689b91b1.js"
+    ]
+  },
+  "ampFirstPages": []
+}

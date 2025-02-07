@@ -1,0 +1,182 @@
+import React from "react";
+import { LineChart } from "@mui/x-charts/LineChart";
+import Split from "../Split";
+
+const CarDetails = ({ vehicleDetails, vehicleTuning }) => {
+  // Initialize the data arrays
+  let rpm = [];
+  let power = [];
+  let torque = [];
+  let tuningPower = [];
+  let tuningTorque = [];
+
+  // Logging vehicle details and tuning details for debugging
+  console.log(vehicleDetails);
+  console.log(vehicleTuning);
+  // Extract and convert the vehicle data
+  if (vehicleDetails) {
+    // RPM Data
+    let test = vehicleDetails?.rpm?.split(",") || [];
+    rpm = test.map((item) => Number(item));
+
+    // OEM Power Data
+    test = vehicleDetails?.oem_power_chart?.split(",") || [];
+    power = test.map((item) => Number(item));
+
+    // OEM Torque Data
+    test = vehicleDetails?.oem_torque_chart?.split(",") || [];
+    torque = test.map((item) => Number(item));
+
+    // Tuning Power Data
+    test = vehicleTuning?.power_chart?.split(",") || [];
+    tuningPower = test.map((item) => Number(item));
+
+    // Tuning Torque Data
+    test = vehicleTuning?.torque_chart?.split(",") || [];
+    tuningTorque = test.map((item) => Number(item));
+  }
+
+  // Calculate final power and torque
+  const FinalPower = (Number(vehicleDetails?.standard_power) || 0) + (Number(vehicleTuning?.difference_power) || 0);
+  const FinalTorque = (Number(vehicleDetails?.standard_torque) || 0) + (Number(vehicleTuning?.difference_torque) || 0);
+  
+  return (
+    <section className="sub-bg">
+      <div className="container">
+        <div className="row">
+          <div className="col-md-8 mt-50">
+            <div key="1" className="col-md-3 col-6 brands">
+              <div className="item wow fadeIn" data-wow-delay=".3s">
+                <div className="img">
+                  <img src="" alt="" />
+                  <Split>
+                    <a
+                      href="#0"
+                      className="link words chars splitting"
+                      data-splitting
+                    >
+                      {vehicleDetails
+                        ? vehicleDetails.full_name
+                        : "Loading..."}
+                    </a>
+                  </Split>
+                </div>
+              </div>
+            </div>
+            <h4>
+              {vehicleDetails
+                ? `${vehicleDetails.full_name}`
+                : "Loading vehicle details..."}
+            </h4>
+            <h6 className="mb-70">
+              Geschätzte 30%:Leistung mehr Leistung und 40%:Drehmoment mehr
+              Drehmoment
+            </h6>
+          </div>
+
+          <div className="col-md-6 mt-40">
+            <table className="table table-bordered text-center">
+              <thead>
+                <tr style={{ backgroundColor: "#f0f0f0" }}>
+                  <th>Parameter</th>
+                  <th>Original</th>
+                  <th>
+                    {vehicleTuning
+                      ?   vehicleTuning.tuning_stage
+
+                      : "Loading..."}
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr style={{ backgroundColor: "#f0f0f0" }}>
+                  <th>Pferdestärken (Bhp)</th>
+                  <td style={{ backgroundColor: "#e0f7fa" }}>
+                    {vehicleDetails
+                      ? vehicleDetails.standard_power
+                      : "Loading..."}
+                  </td>
+                  <td style={{ backgroundColor: "#ffe0b2" }}>
+                    <strong>{FinalPower} </strong> Bhp
+                  </td>
+                </tr>
+
+                <tr style={{ backgroundColor: "#f0f0f0" }}>
+                  <th>Drehmoment (Nm)</th>
+                  <td style={{ backgroundColor: "#e0f7fa" }}>
+                    {vehicleDetails
+                      ? vehicleDetails.standard_torque
+                      : "Loading..."}
+                  </td>
+                  <td style={{ backgroundColor: "#ffe0b2" }}>
+                    <strong>{FinalTorque}</strong> Nm
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          {/* Line Chart on the left side */}
+          <div className="col-md-6 ml-60 mt-30">
+            <LineChart
+              width={500}
+              height={350}
+              series={[
+                { curve: "linear", data: power, label: "OEM Power" },
+                { curve: "linear", data: torque, label: "OEM Torque" },
+                { curve: "linear", data: tuningPower, label: "Stage 1 Power" },
+                {
+                  curve: "linear",
+                  data: tuningTorque,
+                  label: "Stage 1 Torque",
+                },
+              ]}
+              xAxis={[{ scaleType: "point", data: rpm }]}
+            />
+          </div>
+        </div>
+        <div className="row">
+          <h2>Motoreigenschaften</h2>
+        </div>
+        <div className="row">
+          <table className="table table-striped table-hover">
+            <tbody>
+              <tr>
+                <th className="col-lg-6 col-md-4" scope="row">
+                  Kraftstofftyp
+                </th>
+                <td>
+                  {vehicleDetails
+                    ? `${vehicleDetails.fuel}`
+                    : "Loading vehicle details..."}
+                </td>
+              </tr>
+              <tr>
+                <th className="col-lg-6 col-md-4" scope="row">
+                  Abstimmungstyp
+                </th>
+                <td>
+                  {vehicleTuning
+                    ? `${vehicleTuning.tuning_stage}`
+                    : "Loading vehicle details..."}
+                </td>
+              </tr>
+              <tr>
+                <th className="col-lg-6 col-md-4" scope="row">
+                  Motor-Steuergerät
+                </th>
+                <td>
+                  {vehicleDetails
+                    ? `${vehicleDetails.ecu}`
+                    : "Loading vehicle details..."}
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default CarDetails;

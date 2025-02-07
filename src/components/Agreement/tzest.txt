@@ -1,0 +1,47 @@
+import React, { useEffect, useState } from 'react';
+import Link from 'next/link'; // Import Link to create internal links
+
+const CookiesConsent = () => {
+  const [isVisible, setIsVisible] = useState(true);
+
+  useEffect(() => {
+    // Check if the user has already accepted the consent (using localStorage)
+    const consentGiven = localStorage.getItem('cookiesConsent');
+    if (consentGiven) {
+      setIsVisible(false); // Hide the popup if consent was already given
+    }
+  }, []);
+
+  const handleAccept = () => {
+    localStorage.setItem('cookiesConsent', 'true'); // Store the user's consent
+    setIsVisible(false); // Hide the popup
+    alert("Consent accepted");
+  };
+
+  const handleClose = () => {
+    setIsVisible(false); // Hide the popup if the user closes it
+  };
+
+  if (!isVisible) return null; // Return nothing if the popup is hidden
+
+  return (
+    <div className="cookiesConsentContainer">
+      <button className="cookiesConsentClose" onClick={handleClose}>✖</button>
+      <img
+        className="cookiesConsentImage"
+        src="https://cdn-icons-png.flaticon.com/512/1047/1047711.png"
+        alt="cookies-img"
+      />
+      <p className="cookiesConsentText">
+        We use cookies for improving user experience, analytics, and marketing. By accepting, you agree to our
+        <Link legacyBehavior href="/agb"><a className="cookiesConsentLink">AGB</a></Link> and
+        <Link legacyBehavior href="/datenschutzerklaerung"><a className="cookiesConsentLink">Datenschutzerklärung</a></Link>.
+      </p>
+      <div className="cookiesConsentButtonContainer">
+        <button className="cookiesConsentAccept" onClick={handleAccept}>That's fine!</button>
+      </div>
+    </div>
+  );
+};
+
+export default CookiesConsent;
