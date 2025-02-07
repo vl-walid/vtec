@@ -1,0 +1,38 @@
+# GitHub Actions workflow for building and deploying a Next.js site with legacy peer deps
+name: Deploy and Develop Next.js Site
+
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Install Dependencies with Legacy Peer Deps
+        run: npm install --legacy-peer-deps
+
+      - name: Run Next.js in Development Mode
+        run: |
+          echo "Running project with npm run dev..."
+          npm run dev
+
