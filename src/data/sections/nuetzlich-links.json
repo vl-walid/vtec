@@ -1,0 +1,17 @@
+{
+
+    "daten": {
+      "first": "Datenschutz",
+      "second": "Wir legen größten Wert auf den Schutz Ihrer Daten und die Wahrung Ihrer Privatsphäre. Nachstehend informieren wir Sie deshalb über die Erhebung und Verwendung persönlicher Daten bei Nutzung unserer Webseite."
+    },
+
+    "impressum": {
+        "first": "Impressum",
+        "second": "In unserem Impressum informieren wir Sie über die rechtlichen Informationen zu unserem Unternehmen, einschließlich Kontaktdaten und Vertretungsberechtigten."
+      },
+
+    "agb": {
+        "first": "AGB 'S",
+        "second": "Willkommen zu unseren Allgemeinen Geschäftsbedingungen. Diese Bedingungen regeln die Nutzung unserer Dienstleistungen und die rechtlichen Rahmenbedingungen zwischen Ihnen und uns."
+      }
+  }
