@@ -1,0 +1,43 @@
+{
+  "name": "vie-react",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "export": "next build && next export",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.13.3",
+    "@emotion/styled": "^11.13.0",
+    "@mui/material": "^6.1.1",
+    "@mui/x-charts": "^7.18.0",
+    "@vimeo/player": "^2.24.0",
+    "axios": "^1.5.0",
+    "formik": "^2.2.9",
+    "next": "^15.1.6",
+    "react": "^18.2.0",
+    "react-circular-progressbar": "^2.0.4",
+    "react-countup": "^6.1.0",
+    "react-dom": "^18.2.0",
+    "react-modal-video": "^1.2.8",
+    "react-player": "^2.16.0",
+    "react-scroll": "^1.8.4",
+    "react-slick": "^0.28.1",
+    "react-tsparticles": "^2.9.0",
+    "react-vimeo": "^2.0.0",
+    "react-visibility-sensor": "^5.1.1",
+    "sass": "^1.68.0",
+    "simple-parallax-js": "^6.0.1",
+    "slick-carousel": "^1.8.1",
+    "splitting": "^1.1.0",
+    "swiper": "^9.4.0",
+    "swr": "^2.2.5",
+    "typewriter-effect": "^2.18.2"
+  },
+  "devDependencies": {
+    "eslint": "^8.48.0",
+    "eslint-config-next": "^13.4.8"
+  }
+}
