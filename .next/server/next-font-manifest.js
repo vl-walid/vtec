@@ -1,1 +1,0 @@
-self.__NEXT_FONT_MANIFEST='{"pages":{"/kontakt/partner-werden":[],"/ueber-uns/ueber-uns":[]},"app":{},"appUsingSizeAdjust":false,"pagesUsingSizeAdjust":false}';

@@ -1,1 +1,0 @@
-(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[336],{4262:(_,e,n)=>{(window.__NEXT_P=window.__NEXT_P||[]).push(["/404",function(){return n(99)}])},99:(_,e,n)=>{"use strict";n.r(e),n.d(e,{default:()=>s});var u=n(4848);n(6540);let s=()=>(0,u.jsx)("h1",{children:"404 - Page Not Found"})}},_=>{var e=e=>_(_.s=e);_.O(0,[636,593,792],()=>e(4262)),_N_E=_.O()}]);
