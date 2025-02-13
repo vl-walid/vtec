@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { useRouter } from "next/router";
 import LightTheme from "../../../layouts/Light";
-import NavbarFullMenu from "../../../components/navbar-full-menu/navbar-full-menu";
+import NavbarFullMenu from "../../../components/Navbar-full-menu/navbar-full-menu";
 import PageHeader from "../../../components/Page-header/page-header";
 import Footer from "../../../components/Footer/footer";
 import AddDetails from "../../../components/New-car/new-details";
