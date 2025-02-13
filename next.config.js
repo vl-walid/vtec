@@ -12,4 +12,7 @@ module.exports = {
   eslint: {
     ignoreDuringBuilds: false,
   },
+  images: {
+    domains: ["www.evc.de"], 
+  },
 };
