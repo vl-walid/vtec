@@ -83,117 +83,134 @@ const CarDetails = ({ vehicleDetails, vehicleTuning }) => {
           </div>
         </div>
 
-        {/* Table for tuning data */}
-        <div className="col-md-12 mt-40">
-          <table className="table table-bordered text-center">
-            <thead>
-              <tr>
-                <th style={{ backgroundColor: "#4F4F4F", color: "#ffffff" }}>
-                  Parameter
-                </th>
-                <th style={{ backgroundColor: "#2c2c2c", color: "#ffffff" }}>
-                  Original
-                </th>
-                {tuningData.map((tuning, index) => (
-                  <th
-                    key={index}
-                    style={{
-                      backgroundColor: "#b22222", // Deep red for tuning stage columns
-                      color: "#ffffff", // White text for contrast
-                      fontWeight: "bold",
-                    }}
-                  >
-                    {tuning.tuningStage}
+        <div className="col-12 mt-40">
+          <div className="table-responsive">
+            <table className="table table-bordered text-center">
+              <thead>
+                <tr>
+                  <th style={{ backgroundColor: "#4F4F4F", color: "#ffffff" }}>
+                    Parameter
                   </th>
-                ))}
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th style={{ backgroundColor: "#f0f0f0", color: "#000000" }}>
-                  Pferdestärken (PS)
-                </th>
-                <td style={{ backgroundColor: "#e0e0e0", color: "#000000" }}>
-                  {vehicleDetails?.standard_power || "Loading..."}
-                </td>
-                {tuningData.map((tuning, index) => (
-                  <td
-                    key={index}
-                    style={{
-                      backgroundColor: "#ffe5e5", // Light red for rows
-                      color: "#b22222", // Deep red text for emphasis
-                    }}
-                  >
-                    <strong>{tuning.finalPower}</strong> PS
+                  <th style={{ backgroundColor: "#2c2c2c", color: "#ffffff" }}>
+                    Original
+                  </th>
+                  {tuningData.map((tuning, index) => (
+                    <th
+                      key={index}
+                      style={{
+                        backgroundColor: "#b22222", // Deep red for tuning stage columns
+                        color: "#ffffff", // White text for contrast
+                        fontWeight: "bold",
+                      }}
+                    >
+                      {tuning.tuningStage}
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th style={{ backgroundColor: "#f0f0f0", color: "#000000" }}>
+                    Pferdestärken (PS)
+                  </th>
+                  <td style={{ backgroundColor: "#e0e0e0", color: "#000000" }}>
+                    {vehicleDetails?.standard_power || "Loading..."}
                   </td>
-                ))}
-              </tr>
-              <tr>
-                <th style={{ backgroundColor: "#f0f0f0", color: "#000000" }}>
-                  Drehmoment (Nm)
-                </th>
-                <td style={{ backgroundColor: "#e0e0e0", color: "#000000" }}>
-                  {vehicleDetails?.standard_torque || "Loading..."}
-                </td>
-                {tuningData.map((tuning, index) => (
-                  <td
-                    key={index}
-                    style={{
-                      backgroundColor: "#ffe5e5", // Light red for rows
-                      color: "#b22222", // Deep red text for emphasis
-                    }}
-                  >
-                    <strong>{tuning.finalTorque}</strong> Nm
+                  {tuningData.map((tuning, index) => (
+                    <td
+                      key={index}
+                      style={{
+                        backgroundColor: "#ffe5e5", // Light red for rows
+                        color: "#b22222", // Deep red text for emphasis
+                      }}
+                    >
+                      <strong>{tuning.finalPower}</strong> PS
+                    </td>
+                  ))}
+                </tr>
+                <tr>
+                  <th style={{ backgroundColor: "#f0f0f0", color: "#000000" }}>
+                    Drehmoment (Nm)
+                  </th>
+                  <td style={{ backgroundColor: "#e0e0e0", color: "#000000" }}>
+                    {vehicleDetails?.standard_torque || "Loading..."}
                   </td>
-                ))}
-              </tr>
-              <tr>
-                <th style={{ backgroundColor: "#f0f0f0", color: "#000000" }}>
-                  Price (€)
-                </th>
-                <td style={{ backgroundColor: "#e0e0e0", color: "#000000" }}>
-                  -
-                </td>
-                {tuningData.map((tuning, index) => (
-                  <td
-                    key={index}
-                    style={{
-                      backgroundColor: "#ffe5e5", // Light red for rows
-                      color: "#b22222", // Deep red text for emphasis
-                    }}
-                  >
-                    <strong>{tuning.price} €</strong>
+                  {tuningData.map((tuning, index) => (
+                    <td
+                      key={index}
+                      style={{
+                        backgroundColor: "#ffe5e5", // Light red for rows
+                        color: "#b22222", // Deep red text for emphasis
+                      }}
+                    >
+                      <strong>{tuning.finalTorque}</strong> Nm
+                    </td>
+                  ))}
+                </tr>
+                <tr>
+                  <th style={{ backgroundColor: "#f0f0f0", color: "#000000" }}>
+                    Price (€)
+                  </th>
+                  <td style={{ backgroundColor: "#e0e0e0", color: "#000000" }}>
+                    -
                   </td>
-                ))}
-              </tr>
-            </tbody>
-          </table>
+                  {tuningData.map((tuning, index) => (
+                    <td
+                      key={index}
+                      style={{
+                        backgroundColor: "#ffe5e5", // Light red for rows
+                        color: "#b22222", // Deep red text for emphasis
+                      }}
+                    >
+                      <strong>{tuning.price} €</strong>
+                    </td>
+                  ))}
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
 
-        {/* Charts Section */}
         <div className="row mt-30">
           {tuningData.map((tuning, index) => (
-            <div key={index} className="col-md-6">
-              <h5>{tuning.tuningStage} Charts</h5>
-              <LineChart
-                width={400}
-                height={300}
-                series={[
-                  { curve: "linear", data: power, label: "OEM Power" },
-                  { curve: "linear", data: torque, label: "OEM Torque" },
-                  {
-                    curve: "linear",
-                    data: tuning.power,
-                    label: `${tuning.tuningStage} Power`,
-                  },
-                  {
-                    curve: "linear",
-                    data: tuning.torque,
-                    label: `${tuning.tuningStage} Torque`,
-                  },
-                ]}
-                xAxis={[{ scaleType: "point", data: rpm }]}
-              />
+            <div key={index} className="col-12 col-md-6">
+              <div className="flex flex-col items-center p-4">
+              <h4 className="text-2xl font-semibold text-gray-200">{tuning.tuningStage} Charts</h4>
+
+
+
+                {/* Labels with matching colors */}
+                <div className="row mt-2 g-1 justify-content-start">
+                  {[
+                    { label: "OEM Power", color: "#4B0082" }, 
+                    { label: "OEM Torque", color: "#006400" }, 
+                    { label: `${tuning.tuningStage} Power`, color: "#2c2c2c" }, 
+                    { label: `${tuning.tuningStage} Torque`, color: "#8B0000" }, 
+                  ].map(({ label, color }, i) => (
+                    <div key={i} className="col-auto">
+                      <span style={{ color, fontWeight: "bold" }}>{label}</span>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Chart Component */}
+                <LineChart
+                  width={
+                    window.innerWidth < 768
+                      ? window.innerWidth * 0.95
+                      : window.innerWidth * 0.31
+                  } 
+                  height={300}
+                  series={[
+                    { curve: "linear", data: power, color: "#4B0082" }, 
+                    { curve: "linear", data: torque, color: "#006400" }, 
+                    { curve: "linear", data: tuning.power, color: "#2c2c2c" },
+                    { curve: "linear", data: tuning.torque, color: "#8B0000" },
+                  ]}
+                  xAxis={[{ scaleType: "point", data: rpm }]}
+                  tooltip={{ trigger: "item" }}
+                />
+              </div>
             </div>
           ))}
         </div>
