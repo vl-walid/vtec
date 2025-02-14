@@ -31,6 +31,13 @@ const CarAdditionalOptions = ({ additionalOptions }) => {
     return <div>{error}</div>; // Simple error handling
   }
 
+  // Check if the characteristics array is empty for all tuning stages
+  const hasCharacteristics = characteristics.some(option => option.characteristics.length > 0);
+
+  if (!hasCharacteristics) {
+    return null; // Do not render the component if there are no characteristics
+  }
+
   return (
     <section className="sub-bg">
       <div className="container">
@@ -50,7 +57,7 @@ const CarAdditionalOptions = ({ additionalOptions }) => {
                     return (
                       <div
                         key={characteristic.id}
-                        className="col-lg-3 col-md-4 col-4 mb-3 mr-5 p-1 d-flex align-items-center butn curve"
+                        className="col-lg-3 col-md-4 col-10 mb-3 ml-3 mr-5 p-1 d-flex align-items-center butn curve"
                         style={{ backgroundColor: "#2b2d42", color: "white" }}
                       >
                         <div className="">
