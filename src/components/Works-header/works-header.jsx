@@ -7,7 +7,7 @@ const WorksHeader = ({ sliderRef, brand, vehicle_name }) => {
   }, []);
 
   return (
-    <header ref={sliderRef} className="works-header fixed-slider valign sub-bg">
+    <header ref={sliderRef} className="works-header fixed-slider valign sub-bg marginnavbar">
       <div className="container">
         <div className="row justify-content-center">
           <div className="col-12"> 
