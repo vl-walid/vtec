@@ -31,23 +31,45 @@ const MyCar = () => {
     selectedEcu;
 
   // Fetch Categories
-  useEffect(() => {
-    const fetchCategories = async () => {
-      try {
-        setIsLoading(true);
-        const response = await axios.get(
-          "https://back-end.topspeed-performance.de/api/vehicle/categories-activate"
-        );
-        setCategories(response.data);
-      } catch (error) {
-        console.error("Error fetching categories:", error);
-      } finally {
-        setIsLoading(false);
-      }
-    };
+// Fetch Categories
+useEffect(() => {
+  const fetchCategories = async () => {
+    try {
+      const response = await axios.get(
+        "http://127.0.0.1:8000/api/vehicle/categories-activate"
+      );
+      const data = response.data;
 
-    fetchCategories();
-  }, []);
+      // Define the custom order for categories
+      const customOrder = [
+        "Autos", "LKW", "Transporter", "Pick-ups", "Wohnmobile", "Traktoren"
+      ];
+
+      // First, map the categories in the custom order if they exist in the fetched data
+      const orderedCategories = customOrder
+        .map(categoryName => 
+          data.find(category => category.category_name === categoryName)
+        )
+        .filter(Boolean); // Filter out undefined if any categories are missing
+
+      // Then, find any categories that weren't in the custom order
+      const remainingCategories = data.filter(category => 
+        !customOrder.includes(category.category_name)
+      );
+
+      // Concatenate both arrays: ordered categories first, followed by the remaining categories
+      const finalCategories = [...orderedCategories, ...remainingCategories];
+
+      setCategories(finalCategories); // Update state with the final ordered categories
+    } catch (error) {
+      console.error("Error fetching categories:", error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  fetchCategories();
+}, []);
 
   // Fetch Brands based on selected Category
   useEffect(() => {
@@ -56,7 +78,7 @@ const MyCar = () => {
         try {
           setIsLoading(true);
           const response = await axios.get(
-            "https://back-end.topspeed-performance.de/api/vehicle/brands-activate",
+            "http://127.0.0.1:8000/api/vehicle/brands-activate",
             {
               params: { category_id: selectedCategory },
             }
@@ -83,7 +105,7 @@ const MyCar = () => {
         try {
           setIsLoading(true);
           const response = await axios.get(
-            "https://back-end.topspeed-performance.de/api/vehicle/models-activate",
+            "http://127.0.0.1:8000/api/vehicle/models-activate",
             {
               params: { brand_id: selectedBrand },
             }
@@ -110,7 +132,7 @@ const MyCar = () => {
         try {
           setIsLoading(true);
           const response = await axios.get(
-            `https://back-end.topspeed-performance.de/api/vehicle/generations-activate`,
+            `http://127.0.0.1:8000/api/vehicle/generations-activate`,
             {
               params: { model_id: selectedModel },
             }
@@ -137,7 +159,7 @@ const MyCar = () => {
         try {
           setIsLoading(true);
           const response = await axios.get(
-            `https://back-end.topspeed-performance.de/api/vehicle/engines-activate`,
+            `http://127.0.0.1:8000/api/vehicle/engines-activate`,
             {
               params: { generation_id: selectedGeneration },
             }
@@ -164,7 +186,7 @@ const MyCar = () => {
         try {
           setIsLoading(true);
           const response = await axios.get(
-            "https://back-end.topspeed-performance.de/api/vehicle/ecus-activate", // Endpoint to fetch vehicles by engine ID
+            "http://127.0.0.1:8000/api/vehicle/ecus-activate", // Endpoint to fetch vehicles by engine ID
             {
               params: { engine_id: selectedEngine },
             }
@@ -245,14 +267,12 @@ const MyCar = () => {
         <div className="row">
           <div className="col-md-8 col-lg-9">
             <div className="content sm-mb30">
-              <h2 className="wow words chars splitting" data-splitting>
+              <h2 className="color-font">
                 Konfigurator <br />
               </h2>
             </div>
           </div>
         </div>
-
-        {/* Category Selection */}
    
 
 <div className="row">
@@ -271,7 +291,7 @@ const MyCar = () => {
           data-wow-delay=".5s"
           onClick={() => setSelectedCategory(category.id)}
         >
-          <span>{category.category_name}</span>
+          <span>{category.category_name === "Traktoren" ? "Agrar" : category.category_name}</span>
         </div>
       </div>
     </div>

@@ -15,7 +15,7 @@ const Clients = ({ theme }) => {
               <h6 className="wow fadeIn" data-wow-delay=".5s">
                 Beste Eigenschaften
               </h6>
-              <h3 className="wow mb-20 color-font"> Unsere Kunden</h3>
+              <h3 className="wow mb-20 color-font">Unsere Partner</h3>
               <p>
                 Mit Leidenschaft und Expertise steigern wir die Leistung Ihres
                 Fahrzeugs – professionell, effizient und nachhaltig.

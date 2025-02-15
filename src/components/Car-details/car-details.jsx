@@ -72,7 +72,7 @@ const CarDetails = ({ vehicleDetails, vehicleTuning }) => {
   }
 
   return (
-    <section className="sub-bg">
+    <section className="sub-bg ">
       <div className="container">
         {/* Vehicle Info */}
         <div className="row">

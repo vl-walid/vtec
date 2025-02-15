@@ -2680,8 +2680,8 @@ body {
 }
 
 .slider-st {
-  min-height: 95vh;
-  padding: 80px 0;
+  min-height: 75vh;
+  padding: 70px 0;
 }
 
 .slider-st .img {
@@ -3294,8 +3294,8 @@ height: 64px;
 }
 
 .pages-header {
-  min-height: 75vh;
-  padding: 150px 0 0;
+  min-height: 60vh;
+  padding: 130px 0 0;
   position: relative;
 }
 
@@ -3392,7 +3392,7 @@ height: 64px;
 }
 
 .works-header {
-  min-height: 72vh;
+  min-height: 55vh;
 }
 
 .works-header.hfixd {
@@ -7741,10 +7741,8 @@ height: 64px;
   line-height: 1.2;
   text-transform: uppercase;
   margin-bottom: 20px;
-  -webkit-text-stroke-width: 1px;
-  -webkit-text-stroke-color: #000;
-  color: transparent;
 }
+
 
 .call-action .content h2 span {
   color: transparent;

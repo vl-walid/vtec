@@ -49,7 +49,7 @@ const CarAdditionalOptions = ({ additionalOptions }) => {
             characteristics.map((option, index) => ( // Use index to correlate with tuningNames
               <div key={option.vehicle_tuning_id} className="col-12">
                 <h4 className="mb-3">Tuning Stage: {tuningNames[index]}</h4> {/* Display tuning stage instead of ID */}
-                <div className="row">
+                <div className="row mx-auto">
                   {option.characteristics.map((characteristic) => {
                     // Check if image is null or undefined, then use default image
                     const imageSrc = characteristic.image ? `/img/caroptions/${characteristic.image}` : "/img/caroptions/default-characteristic.png";
