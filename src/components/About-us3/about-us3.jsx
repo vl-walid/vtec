@@ -22,7 +22,7 @@ const AboutUs3 = () => {
                 <div className="col-md-6">
                   <div className="item">
                     <div
-                      className="imgone big-bord wow fadeInDown"
+                      className="imgone big-bord  fadeInDown"
                       data-wow-delay=".8s"
                     >
                       <img
@@ -57,7 +57,7 @@ const AboutUs3 = () => {
           <div className="col-lg-5 valign">
             <div className="content">
               <Split>
-                <h4 className="wow words chars splitting" data-splitting>
+                <h4 className="words chars splitting" data-splitting>
                   {AboutUs3date.title.first} <br /> {AboutUs3date.title.second}
                 </h4>
               </Split>
@@ -69,7 +69,7 @@ const AboutUs3 = () => {
               </Split>
               <Link legacyBehavior href={`/about/about-dark`}>
                 <a
-                  className="butn bord curve mt-40 wow fadeInUp"
+                  className="butn bord curve mt-40 fadeInUp"
                   data-wow-delay=".8s"
                 >
                   <span>{AboutUs3date.smallTitle}</span>

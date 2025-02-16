@@ -8,7 +8,7 @@ const TuningComponent = () => {
   // Fetch tuning data when the component mounts
   useEffect(() => {
     axios
-      .get(`https://back-end.topspeed-performance.de/api/vehicle/tuning`)
+      .get(`http://127.0.0.1:8000/api/vehicle/tuning`)
       .then((response) => {
         setTuningData(response.data);
       })
@@ -28,7 +28,7 @@ const TuningComponent = () => {
   const handleTuningSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post(`https://back-end.topspeed-performance.de/api/vehicle/tuning`, newTuning);
+      await axios.post(`http://127.0.0.1:8000/api/vehicle/tuning`, newTuning);
       setTuningData([...tuningData, newTuning]); // Add to the local state
       setNewTuning({ name: "" }); // Reset form
       alert("Tuning added successfully!");

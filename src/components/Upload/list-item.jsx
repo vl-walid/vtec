@@ -11,7 +11,7 @@ const ListItemForm = ({ blogPostId }) => {
   useEffect(() => {
     const fetchListItems = async () => {
       try {
-        const response = await axios.get(`https://back-end.topspeed-performance.de/api/blog-posts/${blogPostId}/list-items`);
+        const response = await axios.get(`http://127.0.0.1:8000/api/blog-posts/${blogPostId}/list-items`);
         setListItems(response.data);
       } catch (error) {
         console.error("Error fetching list items:", error);
@@ -30,7 +30,7 @@ const ListItemForm = ({ blogPostId }) => {
   const handleAddItem = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('https://back-end.topspeed-performance.de/api/list-items', {
+      const response = await axios.post('http://127.0.0.1:8000/api/list-items', {
         list_content: newItem,
         blog_post_id: blogPostId,
       });
@@ -51,7 +51,7 @@ const ListItemForm = ({ blogPostId }) => {
   const handleUpdateItem = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.put(`https://back-end.topspeed-performance.de/api/list-items/${editingItem}`, {
+      const response = await axios.put(`http://127.0.0.1:8000/api/list-items/${editingItem}`, {
         list_content: editingContent,
       });
       setListItems(listItems.map(item => item.id === editingItem ? response.data : item));
@@ -65,7 +65,7 @@ const ListItemForm = ({ blogPostId }) => {
   // Handle deleting an item
   const handleDeleteItem = async (id) => {
     try {
-      await axios.delete(`https://back-end.topspeed-performance.de/api/list-items/${id}`);
+      await axios.delete(`http://127.0.0.1:8000/api/list-items/${id}`);
       setListItems(listItems.filter(item => item.id !== id));
     } catch (error) {
       console.error("Error deleting list item:", error);

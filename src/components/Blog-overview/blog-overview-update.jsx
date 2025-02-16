@@ -15,23 +15,25 @@ const UpdateBlogOverview = ({ blogId }) => {
 
   // Fetch the blog overview details based on blogId
   useEffect(() => {
+    console.log("Blog ID:", blogId); // Debugging the blogId
     const fetchBlogOverview = async () => {
       try {
         const response = await axios.get(
-          `https://back-end.topspeed-performance.de/api/blog-overview/${blogId}`
+          `http://127.0.0.1:8000/api/blog-overview/${blogId}`
         );
         setBlogOverview({
           main_title: response.data.main_title,
-          main_image_url: response.data.main_image, // Assuming main_image is the existing image URL
+          main_image_url: response.data.main_image,
         });
-        setImageUrl(response.data.main_image); // Set the existing image URL
+        setImageUrl(response.data.main_image);
       } catch (error) {
         console.error("Error fetching blog overview:", error);
       }
     };
-
+  
     fetchBlogOverview();
   }, [blogId]);
+  
 
   // Handle file selection
   const handleFileSelect = (event) => {
@@ -48,13 +50,13 @@ const UpdateBlogOverview = ({ blogId }) => {
 
     const formData = new FormData();
     formData.append('file', selectedFile);
-    formData.append('upload_preset', 'vlwalid'); // Replace with your Cloudinary upload preset
+    formData.append('upload_preset', 'vtec-chiptuning'); // Replace with your Cloudinary upload preset
 
     setLoading(true);
 
     try {
       // Upload image to Cloudinary
-      const res = await axios.post('https://api.cloudinary.com/v1_1/dhagemzyp/image/upload', formData);
+      const res = await axios.post('https://api.cloudinary.com/v1_1/dd7enl4lj/image/upload', formData);
       setImageUrl(res.data.secure_url); // Store the URL of the uploaded image
       setBlogOverview({ ...blogOverview, main_image_url: res.data.secure_url }); // Save the image URL in blogOverview
       setLoading(false);
@@ -69,7 +71,7 @@ const UpdateBlogOverview = ({ blogId }) => {
     e.preventDefault();
 
     try {
-      await axios.put(`https://back-end.topspeed-performance.de/api/blog-overview/${blogId}`, {
+      await axios.put(`http://127.0.0.1:8000/api/blog-overview/${blogId}`, {
         main_title: blogOverview.main_title,
         main_image: blogOverview.main_image_url, // Send the Cloudinary image URL
       });

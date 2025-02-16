@@ -12,7 +12,7 @@ const CarAdditionalOptions = ({ additionalOptions }) => {
     if (vehicleId && tuningIds.length > 0) {
       const fetchCharacteristics = async () => {
         try {
-          const response = await axios.post("https://back-end.topspeed-performance.de/api/vehicle-characteristics", {
+          const response = await axios.post("http://127.0.0.1:8000/api/vehicle-characteristics", {
             vehicle_id: vehicleId,
             vehicle_tuning_ids: tuningIds,
           });
@@ -52,7 +52,7 @@ const CarAdditionalOptions = ({ additionalOptions }) => {
                 <div className="row mx-auto">
                   {option.characteristics.map((characteristic) => {
                     // Check if image is null or undefined, then use default image
-                    const imageSrc = characteristic.image ? `/img/caroptions/${characteristic.image}` : "/img/caroptions/default-characteristic.png";
+                    const imageSrc = characteristic.image;
 
                     return (
                       <div

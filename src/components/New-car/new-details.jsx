@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import Image from "next/image";
 
 const AddCategoryAndBrand = () => {
   const [categories, setCategories] = useState([]);
@@ -20,16 +21,49 @@ const AddCategoryAndBrand = () => {
   const [newGeneration, setNewGeneration] = useState("");
   const [newEngine, setNewEngine] = useState("");
 
+  const [imageUrl, setImageUrl] = useState("");
+  const [selectedFile, setSelectedFile] = useState(null);
+
   // Fetch categories on load
   useEffect(() => {
     fetchCategories();
   }, []);
+  // UPload image
+
+  // Handle the image upload when user selects a file
+  const handleImageUpload = (event) => {
+    const file = event.target.files[0];
+    setSelectedFile(file);
+  };
+
+  // Upload the image to Cloudinary
+  const uploadImage = async () => {
+    if (!selectedFile) {
+      alert("Please select a file first");
+      return;
+    }
+
+    const formData = new FormData();
+    formData.append("file", selectedFile);
+    formData.append("upload_preset", "vtec-chiptuning"); // Use your preset name here
+
+    try {
+      const res = await axios.post(
+        "https://api.cloudinary.com/v1_1/dd7enl4lj/image/upload",
+        formData
+      );
+      setImageUrl(res.data.secure_url); // Set the image URL after successful upload
+      console.log("Uploaded Image URL:", res.data.secure_url); // Debugging the response
+    } catch (error) {
+      console.error("Error uploading image:", error);
+    }
+  };
 
   // Fetch categories
   const fetchCategories = async () => {
     try {
       const response = await axios.get(
-        "https://back-end.topspeed-performance.de/api/vehicle/categories"
+        "http://127.0.0.1:8000/api/vehicle/categories"
       );
       setCategories(response.data);
     } catch (error) {
@@ -49,7 +83,7 @@ const AddCategoryAndBrand = () => {
   const fetchBrands = async (categoryId) => {
     try {
       const response = await axios.get(
-        "https://back-end.topspeed-performance.de/api/vehicle/brands",
+        "http://127.0.0.1:8000/api/vehicle/brands",
         {
           params: { category_id: categoryId },
         }
@@ -72,7 +106,7 @@ const AddCategoryAndBrand = () => {
   const fetchModels = async (brandId) => {
     try {
       const response = await axios.get(
-        "https://back-end.topspeed-performance.de/api/vehicle/models",
+        "http://127.0.0.1:8000/api/vehicle/models",
         {
           params: { brand_id: brandId },
         }
@@ -95,7 +129,7 @@ const AddCategoryAndBrand = () => {
   const fetchGenerations = async (modelId) => {
     try {
       const response = await axios.get(
-        "https://back-end.topspeed-performance.de/api/vehicle/generations",
+        "http://127.0.0.1:8000/api/vehicle/generations",
         {
           params: { model_id: modelId },
         }
@@ -118,7 +152,7 @@ const AddCategoryAndBrand = () => {
   const fetchEngines = async (generationId) => {
     try {
       const response = await axios.get(
-        "https://back-end.topspeed-performance.de/api/vehicle/engines",
+        "http://127.0.0.1:8000/api/vehicle/engines",
         {
           params: { generation_id: generationId },
         }
@@ -136,7 +170,7 @@ const AddCategoryAndBrand = () => {
     try {
       // Send the request to toggle the active status
       const response = await axios.put(
-        `https://back-end.topspeed-performance.de/api/toggle-active/categories/${categoryId}`
+        `http://127.0.0.1:8000/api/toggle-active/categories/${categoryId}`
       );
 
       // Get the updated data from the response
@@ -160,7 +194,7 @@ const AddCategoryAndBrand = () => {
   const toggleActiveStatusBrand = async (brandId) => {
     try {
       const response = await axios.put(
-        `https://back-end.topspeed-performance.de/api/toggle-active/brands/${brandId}`
+        `http://127.0.0.1:8000/api/toggle-active/brands/${brandId}`
       );
       const { updated_brand } = response.data;
 
@@ -185,7 +219,7 @@ const AddCategoryAndBrand = () => {
   const toggleActiveStatusModel = async (modelId) => {
     try {
       const response = await axios.put(
-        `https://back-end.topspeed-performance.de/api/toggle-active/models/${modelId}`
+        `http://127.0.0.1:8000/api/toggle-active/models/${modelId}`
       );
       const { updated_model } = response.data;
 
@@ -211,7 +245,7 @@ const AddCategoryAndBrand = () => {
   const toggleActiveStatusGeneration = async (generationId) => {
     try {
       const response = await axios.put(
-        `https://back-end.topspeed-performance.de/api/toggle-active/generations/${generationId}`
+        `http://127.0.0.1:8000/api/toggle-active/generations/${generationId}`
       );
       const { updated_generation } = response.data;
 
@@ -239,7 +273,7 @@ const AddCategoryAndBrand = () => {
   const toggleActiveStatusEngine = async (engineId) => {
     try {
       const response = await axios.put(
-        `https://back-end.topspeed-performance.de/api/toggle-active/engines/${engineId}`
+        `http://127.0.0.1:8000/api/toggle-active/engines/${engineId}`
       );
       const { updated_engine } = response.data;
 
@@ -262,18 +296,37 @@ const AddCategoryAndBrand = () => {
   };
 
   // Add a new category
+  // Add a new category
   const handleAddCategory = async (e) => {
     e.preventDefault();
+
+    if (!newCategory) {
+      alert("Please enter a category name");
+      return;
+    }
+
+    if (!imageUrl) {
+      alert("Please upload an image first");
+      return;
+    }
+
     try {
+      // Send category data including image URL
       const response = await axios.post(
-        "https://back-end.topspeed-performance.de/api/vehicle/categories",
+        "http://127.0.0.1:8000/api/vehicle/categories",
         {
           category_name: newCategory,
+          category_image: imageUrl,
         }
       );
+
+      // Update categories in the state
       setCategories([...categories, response.data]);
-      alert("Category added successfully");
+
+      // Clear the input fields and image
       setNewCategory("");
+      setImageUrl("");
+      alert("Category added successfully!");
     } catch (error) {
       alert("Error adding category");
     }
@@ -288,7 +341,7 @@ const AddCategoryAndBrand = () => {
     }
     try {
       const response = await axios.post(
-        "https://back-end.topspeed-performance.de/api/vehicle/brands",
+        "http://127.0.0.1:8000/api/vehicle/brands",
         {
           brand_name: newBrand,
           category_id: selectedCategory,
@@ -311,7 +364,7 @@ const AddCategoryAndBrand = () => {
     }
     try {
       const response = await axios.post(
-        "https://back-end.topspeed-performance.de/api/vehicle/models",
+        "http://127.0.0.1:8000/api/vehicle/models",
         {
           model_name: newModel,
           brand_id: selectedBrand,
@@ -334,7 +387,7 @@ const AddCategoryAndBrand = () => {
     }
     try {
       const response = await axios.post(
-        "https://back-end.topspeed-performance.de/api/vehicle/generations",
+        "http://127.0.0.1:8000/api/vehicle/generations",
         {
           generation_name: newGeneration,
           model_id: selectedModel,
@@ -357,7 +410,7 @@ const AddCategoryAndBrand = () => {
     }
     try {
       const response = await axios.post(
-        "https://back-end.topspeed-performance.de/api/vehicle/engines",
+        "http://127.0.0.1:8000/api/vehicle/engines",
         {
           engine_name: newEngine,
           generation_id: selectedGeneration,
@@ -373,8 +426,33 @@ const AddCategoryAndBrand = () => {
 
   return (
     <div className="container">
-      <h2>Add New Category, Brand, Model, Generation, and Engine</h2>
+      <h2>Add New Category</h2>
+      {/* Upload Image */}
+      <div>
+        <h3>Upload Image</h3>
+        <input
+          type="file"
+          accept="image/*"
+          onChange={handleImageUpload}
+          className="form-control mb-2"
+        />
+        {imageUrl && (
+          <Image
+            src={imageUrl}
+            alt="Category Preview"
+            style={{ width: "100px", marginTop: "10px" }}
+            width={75}
+            height={75}
+          />
+        )}
+      </div>
 
+      {/* Upload Button */}
+      <div>
+        <button onClick={uploadImage} className="btn btn-primary">
+          Upload Image
+        </button>
+      </div>
       {/* Add Category */}
       <div>
         <h3>Category</h3>
@@ -402,7 +480,7 @@ const AddCategoryAndBrand = () => {
           onChange={(e) => setSelectedCategory(e.target.value)}
           className="form-select mb-2"
         >
-          <option value="">Select Category</option>
+          <option >Select Category</option>
           {categories.map((category) => (
             <option key={category.id} value={category.id}>
               {category.category_name}
@@ -615,47 +693,46 @@ const AddCategoryAndBrand = () => {
       <hr />
 
       {/* Select Engine */}
-  {/* Select Engine */}
-<div>
-  <h3>Select Engine</h3>
-  <select
-    value={selectedEngine || ""}
-    onChange={(e) => setSelectedEngine(e.target.value)}
-    className="form-select mb-2"
-  >
-    <option value="">Select Engine</option>
-    {engines.map((engine) => (
-      <option key={engine.id} value={engine.id}>
-        {engine.name}
-      </option>
-    ))}
-  </select>
-  {selectedEngine && (
-    <div className="mt-2">
-      <button
-        onClick={() => toggleActiveStatusEngine(selectedEngine)}
-        className={`btn ${
-          engines.find((engine) => engine.id === Number(selectedEngine))
-            ?.is_active === 1
-            ? "btn-danger"
-            : "btn-success"
-        }`}
-      >
-        {engines.find((engine) => engine.id === Number(selectedEngine))
-          ?.is_active === 1
-          ? "Deactivate"
-          : "Activate"}
-      </button>
-      <a
-        href={`/admin/car/new-car/${selectedEngine}`}
-        className="btn btn-primary ms-2"
-      >
-        Neues Auto erstellen
-      </a>
-    </div>
-  )}
-</div>
-
+      {/* Select Engine */}
+      <div>
+        <h3>Select Engine</h3>
+        <select
+          value={selectedEngine || ""}
+          onChange={(e) => setSelectedEngine(e.target.value)}
+          className="form-select mb-2"
+        >
+          <option value="">Select Engine</option>
+          {engines.map((engine) => (
+            <option key={engine.id} value={engine.id}>
+              {engine.name}
+            </option>
+          ))}
+        </select>
+        {selectedEngine && (
+          <div className="mt-2">
+            <button
+              onClick={() => toggleActiveStatusEngine(selectedEngine)}
+              className={`btn ${
+                engines.find((engine) => engine.id === Number(selectedEngine))
+                  ?.is_active === 1
+                  ? "btn-danger"
+                  : "btn-success"
+              }`}
+            >
+              {engines.find((engine) => engine.id === Number(selectedEngine))
+                ?.is_active === 1
+                ? "Deactivate"
+                : "Activate"}
+            </button>
+            <a
+              href={`/admin/car/new-car/${selectedEngine}`}
+              className="btn btn-primary ms-2"
+            >
+              Neues Auto erstellen
+            </a>
+          </div>
+        )}
+      </div>
     </div>
   );
 };

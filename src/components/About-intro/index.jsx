@@ -16,12 +16,12 @@ const AboutIntro = () => {
             <div className="text">
               <Split>
                 <p
-                  className="wow txt mb-10 words chars splitting"
+                  className="txt mb-10 words chars splitting"
                   data-splitting
                 >
                   Willkommen bei VTEC-Chiptuning, Ihrem Partner f&uuml;r innovative Softwareoptimierungen und maximale Leistungssteigerungen. Unser erfahrenes Team entwickelt maßgeschneiderte Lösungen, um das volle Potenzial Ihres Fahrzeugs auszusch&ouml;pfen.
                 </p>
-                <p className="wow txt words chars splitting" data-splitting> Durch speziell entwickelte Chiptuning-Software entlocken wir Ihrem Motor die optimale Leistung. Mit modernster Technik und jahrelanger Erfahrung sorgen wir f&uuml;r eine effiziente und zuverl&auml;ssige Leistungssteigerung.
+                <p className="txt words chars splitting" data-splitting> Durch speziell entwickelte Chiptuning-Software entlocken wir Ihrem Motor die optimale Leistung. Mit modernster Technik und jahrelanger Erfahrung sorgen wir f&uuml;r eine effiziente und zuverl&auml;ssige Leistungssteigerung.
                 </p>
               </Split>
             </div>

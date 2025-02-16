@@ -72,11 +72,11 @@ const Works = () => {
                   worksData.map((item, index) => (
                     <SwiperSlide className="swiper-slide" key={item.id}>
                       <div
-                        className="content wow noraidus fadeInUp"
+                        className="content noraidus fadeInUp"
                         data-wow-delay=".3s"
                       >
                         <div
-                          className="item-img bg-img wow imago"
+                          className="item-img bg-img imago"
                           style={{
                             backgroundImage: `url(${item.image})`,
                           }}

@@ -9,16 +9,16 @@ const Blogs1 = () => {
         <div className="row justify-content-center">
           <div className="col-lg-8 col-md-10">
             <div className="sec-head  text-center">
-              <h6 className="wow fadeIn" data-wow-delay=".5s">
+              <h6 className="fadeIn" data-wow-delay=".5s">
                 RECENT ARTICLES
               </h6>
-              <h3 className="wow color-font">From our blogs.</h3>
+              <h3 className="color-font">From our blogs.</h3>
             </div>
           </div>
         </div>
         <div className="row">
           <div className="col-lg-6">
-            <div className="item md-mb50 wow fadeInUp" data-wow-delay=".3s">
+            <div className="item md-mb50 fadeInUp" data-wow-delay=".3s">
               <div className="img">
                 <img src="/img/blog/1.jpg" alt="" />
               </div>

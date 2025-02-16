@@ -29,48 +29,46 @@ const MyCar = () => {
     selectedGeneration &&
     selectedEngine &&
     selectedEcu;
-
-  // Fetch Categories
-// Fetch Categories
-useEffect(() => {
-  const fetchCategories = async () => {
-    try {
-      const response = await axios.get(
-        "http://127.0.0.1:8000/api/vehicle/categories-activate"
-      );
-      const data = response.data;
-
-      // Define the custom order for categories
-      const customOrder = [
-        "Autos", "LKW", "Transporter", "Pick-ups", "Wohnmobile", "Traktoren"
-      ];
-
-      // First, map the categories in the custom order if they exist in the fetched data
-      const orderedCategories = customOrder
-        .map(categoryName => 
-          data.find(category => category.category_name === categoryName)
-        )
-        .filter(Boolean); // Filter out undefined if any categories are missing
-
-      // Then, find any categories that weren't in the custom order
-      const remainingCategories = data.filter(category => 
-        !customOrder.includes(category.category_name)
-      );
-
-      // Concatenate both arrays: ordered categories first, followed by the remaining categories
-      const finalCategories = [...orderedCategories, ...remainingCategories];
-
-      setCategories(finalCategories); // Update state with the final ordered categories
-    } catch (error) {
-      console.error("Error fetching categories:", error);
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
-  fetchCategories();
-}, []);
-
+    // Fetch Categories
+    useEffect(() => {
+      const fetchCategories = async () => {
+        try {
+          const response = await axios.get("http://127.0.0.1:8000/api/vehicle/categories-activate");
+          const data = response.data;
+  
+          // Define the custom order for categories
+          const customOrder = [
+            "Autos", "LKW", "Transporter", "Pick-ups", "Wohnmobile", "Traktoren"
+          ];
+  
+          // First, map the categories in the custom order if they exist in the fetched data
+          const orderedCategories = customOrder
+            .map(categoryName => 
+              data.find(category => category.category_name === categoryName)
+            )
+            .filter(Boolean); // Filter out undefined if any categories are missing
+  
+          // Then, find any categories that weren't in the custom order
+          const remainingCategories = data.filter(category => 
+            !customOrder.includes(category.category_name)
+          );
+  
+          // Concatenate both arrays: ordered categories first, followed by the remaining categories
+          const finalCategories = [...orderedCategories, ...remainingCategories];
+  
+          setCategories(finalCategories); // Update state with the final ordered categories
+        } catch (error) {
+          console.error("Error fetching categories:", error);
+        } finally {
+          setIsLoading(false);
+        }
+      };
+  
+      fetchCategories();
+    }, []);
+    const handleCategoryChange = (categoryId) => {
+      setSelectedCategory(categoryId);
+    };
   // Fetch Brands based on selected Category
   useEffect(() => {
     const fetchBrands = async () => {
@@ -206,10 +204,6 @@ useEffect(() => {
     fetchEcUs();
   }, [selectedEngine]);
 
-  const handleCategoryChange = (e) => {
-    setSelectedCategory(e.target.value);
-  };
-
   const handleBrandChange = (e) => {
     setSelectedBrand(e.target.value);
     setSelectedModel(null); // Reset model selection
@@ -275,31 +269,29 @@ useEffect(() => {
         </div>
    
 
-<div className="row">
-  {categories.map((category) => (
-    <div key={category.id} className="col-sm-6 col-md-4 col-lg-2 valign mb-5 mt-5">
-      <div className="d-flex flex-column align-items-center">
-        <Image
-          src={`/img/${category.category_name.toLowerCase().replace(" ", "-")}.png`}
-          alt={`${category.category_name} Icon`}
-          className="img-fluid"
-          width={75} 
-          height={75} 
-        />
-        <div
-          className={`butn bord curve wow fadeInUp ${selectedCategory === category.id ? "selected" : ""}`}
-          data-wow-delay=".5s"
-          onClick={() => setSelectedCategory(category.id)}
-        >
-          <span>{category.category_name === "Traktoren" ? "Agrar" : category.category_name}</span>
+        <div className="row">
+          {categories.map((category) => (
+            <div key={category.id} className="col-sm-6 col-md-4 col-lg-2 valign mb-5 mt-5">
+              <div className="d-flex flex-column align-items-center">
+                <Image
+                  src={category.category_image} // Use category_image from the API response
+                  alt={`${category.category_name} Icon`}
+                  className="img-fluid"
+                  width={75} 
+                  height={75} 
+                />
+                <div
+                  className={`butn bord curve wow fadeInUp ${selectedCategory === category.id ? "selected" : ""}`}
+                  data-wow-delay=".5s"
+                  onClick={() => handleCategoryChange(category.id)} // Set selected category
+                >
+                  <span>{category.category_name}</span> {/* Display the category name directly */}
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
-      </div>
-    </div>
-  ))}
-</div>
 
-
-        {/* Brand Selection */}
         <div className="row mt-40">
           <div className="col-lg-4 col-md-6 col-12 mb-3 position-relative">
             <select

@@ -13,6 +13,22 @@ module.exports = {
     ignoreDuringBuilds: false,
   },
   images: {
-    domains: ['www.evc.de', 'cdn-icons-png.flaticon.com', 'res.cloudinary.com'],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "www.evc.de",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "res.cloudinary.com",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "cdn-icons-png.flaticon.com",
+        pathname: "/**",
+      },
+    ],
   },
 };

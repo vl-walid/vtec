@@ -5,13 +5,12 @@ import Cursor from "../components/cursor";
 import ScrollToTop from "../components/scrollToTop";
 import LoadingScreen from "../components/Loading-Screen";
 import "../styles/main.scss";
-import Link from "next/link";
 function MyApp({ Component, pageProps }) {
   return (
     <>
       <Head>
         <title>VTEC Chiptuning</title>
-        <Link rel="icon" href="/img/favicon.ico" />
+        <link rel="icon" href="/img/favicon.ico" />
       </Head>
       <Cursor />
       <LoadingScreen />

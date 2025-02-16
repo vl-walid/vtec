@@ -32,14 +32,14 @@ const AddBlogForm = () => {
 
     const formData = new FormData();
     formData.append("file", selectedFile);
-    formData.append("upload_preset", "vlwalid"); // Replace with your Cloudinary upload preset
+    formData.append("upload_preset", "vtec-chiptuning"); // Replace with your Cloudinary upload preset
 
     setLoading(true);
 
     try {
       // Upload image to Cloudinary
       const res = await axios.post(
-        "https://api.cloudinary.com/v1_1/dhagemzyp/image/upload",
+        "https://api.cloudinary.com/v1_1/dd7enl4lj/image/upload",
         formData
       );
       setImageUrl(res.data.secure_url); // Store the URL of the uploaded image
@@ -61,7 +61,7 @@ const AddBlogForm = () => {
 
     try {
       const response = await axios.post(
-        "https://back-end.topspeed-performance.de/api/blog-overview",
+        "http://127.0.0.1:8000/api/blog-overview",
         formData,
         {
           headers: {

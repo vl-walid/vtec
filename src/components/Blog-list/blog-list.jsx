@@ -13,7 +13,7 @@ const BlogList = () => {
   const fetchBlogs = async (page) => {
     try {
       const response = await axios.get(
-        `https://back-end.topspeed-performance.de/api/blog-overviews?page=${page}`
+        `http://127.0.0.1:8000/api/blog-overviews?page=${page}`
       );
       setBlogs(response.data.data); // Assuming the 'data' field contains blog data
       setTotalPages(response.data.last_page); // Assuming 'last_page' field contains total number of pages
@@ -34,7 +34,7 @@ const BlogList = () => {
             <div className="posts mt-80">
               {blogs.map((blogItem) => (
                 <div
-                  className="item mb-80 wow fadeInUp"
+                  className="item mb-80 fadeInUp"
                   key={blogItem.id}
                   data-wow-delay=".3s"
                 >

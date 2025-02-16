@@ -13,7 +13,7 @@ const NewCarCharacteristics = ({ vehicleID }) => {
   useEffect(() => {
     const fetchCharacteristics = async () => {
       try {
-        const response = await axios.get("https://back-end.topspeed-performance.de/api/vehicles-characteristics");
+        const response = await axios.get("http://127.0.0.1:8000/api/vehicles-characteristics");
         setCharacteristics(response.data.characteristics || []);
       } catch (error) {
         console.error("Error fetching characteristics:", error);
@@ -94,7 +94,7 @@ const NewCarCharacteristics = ({ vehicleID }) => {
       });
 
       // Send data to the backend
-      const response = await axios.post("https://back-end.topspeed-performance.de/api/vehicle/add-characteristics", {
+      const response = await axios.post("http://127.0.0.1:8000/api/vehicle/add-characteristics", {
         vehicle_id: vehicleID,
         characteristics: addCharacteristic, // Send only the IDs
       });

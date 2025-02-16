@@ -16,13 +16,19 @@ const UploadBlogDetails = ({ id }) => {
   const [message, setMessage] = useState("");
   const [imageUrls, setImageUrls] = useState({ image1: "", image2: "" });
 
-  // Check if blog post exists on component load
+  // Fetch blog details only when `id` is defined
   useEffect(() => {
+    if (!id) {
+      console.error("Blog ID is not available.");
+      return;
+    }
+
     const fetchBlogDetails = async () => {
       try {
         const response = await axios.get(
-          `https://back-end.topspeed-performance.de/api/blog-posts/${id}`
+          `http://127.0.0.1:8000/api/blog-posts/${id}`
         );
+
         if (response.data) {
           setBlogExists(true);
           setDetails({
@@ -38,7 +44,13 @@ const UploadBlogDetails = ({ id }) => {
           setBlogPostId(response.data.id);
         }
       } catch (error) {
-        console.error("Error fetching blog post:", error);
+        // Handle error gracefully
+        if (error.response && error.response.status === 404) {
+          setMessage("Blog post not found!");
+        } else {
+          console.error("Error fetching blog post:", error);
+          setMessage("Error fetching blog details.");
+        }
       }
     };
 
@@ -105,8 +117,8 @@ const UploadBlogDetails = ({ id }) => {
     try {
       const response = await axios.post(
         blogExists
-          ? `https://back-end.topspeed-performance.de/api/blog-posts/${id}/update`
-          : "https://back-end.topspeed-performance.de/api/blog-posts-new",
+          ? `http://127.0.0.1:8000/api/blog-posts/${id}/update`
+          : "http://127.0.0.1:8000/api/blog-posts-new",
         formData,
         {
           headers: {
@@ -132,7 +144,7 @@ const UploadBlogDetails = ({ id }) => {
   const handleDelete = async () => {
     try {
       const response = await axios.delete(
-        `https://back-end.topspeed-performance.de/api/blog-posts/${id}`
+        `http://127.0.0.1:8000/api/blog-posts/${id}`
       );
       if (response.status === 200) {
         setMessage("Blog post deleted successfully!");
@@ -206,7 +218,7 @@ const UploadBlogDetails = ({ id }) => {
               <Image
                 src={imageUrls.image1}
                 alt="Uploaded Image 1"
-                width={600}  // Adjust width based on the image size you want
+                width={600} // Adjust width based on the image size you want
                 height={300} // Adjust height as needed
                 className="img-fluid mt-2"
                 style={{
@@ -238,7 +250,7 @@ const UploadBlogDetails = ({ id }) => {
               <Image
                 src={imageUrls.image2}
                 alt="Uploaded Image 2"
-                width={600}  // Adjust width based on the image size you want
+                width={600} // Adjust width based on the image size you want
                 height={300} // Adjust height as needed
                 className="img-fluid mt-2"
                 style={{
@@ -272,10 +284,7 @@ const UploadBlogDetails = ({ id }) => {
                 Delete Blog Post
               </button>
 
-              <Link legacyBehavior
-                href={`/admin/blog/news-beitraege-details/${blogPostId}`}
-                className="btn btn-info ms-3"
-              >
+              <Link legacyBehavior href={`/admin/blog/news-beitraege-details/${blogPostId}`} className="btn btn-info ms-3">
                 View Blog
               </Link>
             </>

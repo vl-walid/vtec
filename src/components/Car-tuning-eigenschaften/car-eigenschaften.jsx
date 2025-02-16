@@ -10,7 +10,7 @@ const CarEigenschaften = ({ car_id, tuning_id }) => {
   useEffect(() => {
     const fetchCharacteristics = async () => {
       try {
-        const response = await axios.get(`https://back-end.topspeed-performance.de/api/characteristics`);
+        const response = await axios.get(`http://127.0.0.1:8000/api/characteristics`);
         setCharacteristics(response.data);
       } catch (error) {
         console.error("Error fetching characteristics:", error);
@@ -25,7 +25,7 @@ const CarEigenschaften = ({ car_id, tuning_id }) => {
     if (car_id && tuning_id) {
       try {
         const vehicleResponse = await axios.get(
-          `https://back-end.topspeed-performance.de/api/vehicle/stage-and-name`, 
+          `http://127.0.0.1:8000/api/vehicle/stage-and-name`, 
           { params: { vehicle_id: car_id, tuning_id: tuning_id } }
         );
         setVehicleDetails(vehicleResponse.data);
@@ -45,7 +45,7 @@ const CarEigenschaften = ({ car_id, tuning_id }) => {
     if (car_id && tuning_id) {
       try {
         const response = await axios.get(
-          `https://back-end.topspeed-performance.de/api/vehicle/characteristics-by-tuning-id`,
+          `http://127.0.0.1:8000/api/vehicle/characteristics-by-tuning-id`,
           { params: { vehicle_id: car_id, tuning_id } }
         );
         setCarCharacteristics(response.data);
@@ -69,7 +69,7 @@ const CarEigenschaften = ({ car_id, tuning_id }) => {
       });
 
       await axios.post(
-        `https://back-end.topspeed-performance.de/api/vehicle/add-characteristics-tuning`,
+        `http://127.0.0.1:8000/api/vehicle/add-characteristics-tuning`,
         null,
         { params: { vehicle_id: car_id, tuning_id: tuning_id, characteristic_id } }
       );
@@ -85,7 +85,7 @@ const CarEigenschaften = ({ car_id, tuning_id }) => {
   const removeCharacteristic = async (id) => {
     try {
       await axios.delete(
-        `https://back-end.topspeed-performance.de/api/vehicle/tuning/characteristic-delete/`,
+        `http://127.0.0.1:8000/api/vehicle/tuning/characteristic-delete/`,
         {
           data: {
             vehicle_id: car_id,

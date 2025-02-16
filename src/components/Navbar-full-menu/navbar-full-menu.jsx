@@ -1,18 +1,31 @@
 /* eslint-disable @next/next/no-img-element */
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import appData from "../../data/app.json";
 import initFullNavbarMenu from "../../common/initFullNavbarMenu";
-import { useRouter } from "next/router"; // Import useRouter if not already done
-import axios from "axios"; // Import axios if not already done'
-
+import { useRouter } from "next/router";
+import axios from "axios";
 
 const NavbarFullMenu = ({ theme }) => {
-  React.useEffect(() => {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const router = useRouter();
+
+  useEffect(() => {
     initFullNavbarMenu();
   }, []);
 
-  const router = useRouter();
+  const handleMenuToggle = () => {
+    setMenuOpen((prev) => !prev);
+  };
+
+  useEffect(() => {
+    const menu = document.querySelector(".hamenu");
+    if (menuOpen) {
+      menu.classList.add("open");
+    } else {
+      menu.classList.remove("open");
+    }
+  }, [menuOpen]);
 
   const handleLogout = async () => {
     try {
@@ -24,12 +37,10 @@ const NavbarFullMenu = ({ theme }) => {
       }
 
       const response = await axios.post(
-        "https://back-end.topspeed-performance.de/api/logout",
+        "http://127.0.0.1:8000/api/logout",
         {},
         {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
+          headers: { Authorization: `Bearer ${token}` },
         }
       );
 
@@ -46,30 +57,24 @@ const NavbarFullMenu = ({ theme }) => {
 
   return (
     <>
-      <div
-        id="navi"
-        className={`topnav ${theme ? (theme === "light" ? "light" : "") : ""}`}
-      >
+      <div id="navi" className={`topnav ${theme === "light" ? "light" : ""}`}>
         <div className="container-fluid">
           <div className="logo">
             <Link legacyBehavior href="/">
-              {theme ? (
-                theme === "light" ? (
-                  <img src={appData.darkLogo} alt="logo" />
-                ) : (
-                  <img src={appData.lightLogo} alt="logo" />
-                )
-              ) : (
-                <img src={appData.lightLogo} alt="logo" />
-              )}
+              <a>
+                <img
+                  src={theme === "light" ? appData.darkLogo : appData.lightLogo}
+                  alt="logo"
+                />
+              </a>
             </Link>
           </div>
-          <div className="menu-icon">
+          <div className="menu-icon" onClick={handleMenuToggle}>
             <span className="icon">
               <i></i>
               <i></i>
             </span>
-            <span className="text" data-splitting>
+            <span className="text">
               <span className="menu-text word">Menu</span>
             </span>
           </div>
@@ -84,7 +89,7 @@ const NavbarFullMenu = ({ theme }) => {
                 <ul className="main-menu">
                   <li>
                     <div className="o-hidden">
-                      <Link legacyBehavior href={`/`}>
+                      <Link legacyBehavior href="/">
                         <a className="link">
                           <span className="nm">01.</span>Startseite
                         </a>
@@ -93,17 +98,16 @@ const NavbarFullMenu = ({ theme }) => {
                   </li>
                   <li>
                     <div className="o-hidden">
-                      <Link legacyBehavior href={`/admin/new-blog/`}>
+                      <Link legacyBehavior href="/admin/new-blog/">
                         <a className="link">
                           <span className="nm">02.</span>Neue Neuigkeite
                         </a>
                       </Link>
                     </div>
                   </li>
-
                   <li>
                     <div className="o-hidden">
-                      <Link legacyBehavior href={`/admin/car/search-car/`}>
+                      <Link legacyBehavior href="/admin/car/search-car/">
                         <a className="link">
                           <span className="nm">03.</span>Auto nach Name suchen
                         </a>
@@ -112,7 +116,7 @@ const NavbarFullMenu = ({ theme }) => {
                   </li>
                   <li>
                     <div className="o-hidden">
-                      <Link legacyBehavior href={`/admin/car/new-car`}>
+                      <Link legacyBehavior href="/admin/car/new-car">
                         <a className="link">
                           <span className="nm">04.</span>Neues Auto
                         </a>
@@ -121,8 +125,9 @@ const NavbarFullMenu = ({ theme }) => {
                   </li>
                   <li>
                     <div className="o-hidden">
-                      <Link legacyBehavior
-                        href={`/admin/car/tuning-eigenschaften-hinzufuegen/`}
+                      <Link
+                        legacyBehavior
+                        href="/admin/car/tuning-eigenschaften-hinzufuegen/"
                       >
                         <a className="link">
                           <span className="nm">05.</span>Tuning und
@@ -137,11 +142,11 @@ const NavbarFullMenu = ({ theme }) => {
             <div className="col-lg-3 col-md-4">
               <div className="cont-info">
                 <div className="item">
-                  <h6>Nummer : </h6>
+                  <h6>Nummer:</h6>
                   <p>034294/843751</p>
                 </div>
                 <div className="item">
-                  <h6>Offizielle Adresse :</h6>
+                  <h6>Offizielle Adresse:</h6>
                   <p>Am Bahndamm 9, 04509 Krostitz</p>
                 </div>
                 <div className="item">
@@ -153,10 +158,7 @@ const NavbarFullMenu = ({ theme }) => {
                   </p>
                 </div>
                 <div className="item">
-                  <button
-                    onClick={handleLogout}
-                    className="admin-logout-btn mt-25"
-                  >
+                  <button onClick={handleLogout} className="admin-logout-btn mt-25">
                     Logout
                   </button>
                 </div>

@@ -74,16 +74,7 @@ const CarDetails = ({ vehicleDetails, vehicleTuning }) => {
   return (
     <section className="sub-bg ">
       <div className="container">
-        {/* Vehicle Info */}
-        <div className="row">
-          <div className="col-md-8 mt-50">
-            <h4>
-              {vehicleDetails ? `${vehicleDetails.full_name}` : "Loading..."}
-            </h4>
-          </div>
-        </div>
-
-        <div className="col-12 mt-40">
+        <div className="col-12 ">
           <div className="table-responsive">
             <table className="table table-bordered text-center">
               <thead>
@@ -198,7 +189,7 @@ const CarDetails = ({ vehicleDetails, vehicleTuning }) => {
                   width={
                     window.innerWidth < 768
                       ? window.innerWidth * 0.95
-                      : window.innerWidth * 0.31
+                      : window.innerWidth * 0.32
                   } 
                   height={300}
                   series={[

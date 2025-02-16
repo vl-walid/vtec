@@ -1,5 +1,5 @@
 import Document, { Html, Head, Main, NextScript } from "next/document";
-import Link from "next/link";
+
 class MyDocument extends Document {
   static async getInitialProps(ctx) {
     const initialProps = await Document.getInitialProps(ctx);
@@ -22,12 +22,12 @@ class MyDocument extends Document {
             content="Vie - Onepage Multi-Purpose HTML5 Template"
           />
           <meta name="author" content="" />
-          <Link rel="shortcut icon" href="/img/favicon.ico" />
-          <Link 
+          <link rel="shortcut icon" href="/img/favicon.ico" />
+          <link 
             href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap"
             rel="stylesheet"
           />
-          <Link
+          <link
             href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@100;200;300;400;500;600;700;800;900&display=swap"
             rel="stylesheet"
           />

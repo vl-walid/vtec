@@ -5,6 +5,7 @@ import Image from "next/image"; // Import Image component
 const AddCharacteristic = () => {
   const [name, setName] = useState("");
   const [image, setImage] = useState(null); // Store image or null
+  const [imageUrl, setImageUrl] = useState(""); // Store the uploaded image URL
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(null);
   const [characteristics, setCharacteristics] = useState([]); // State to store characteristics
@@ -13,7 +14,7 @@ const AddCharacteristic = () => {
   useEffect(() => {
     const fetchCharacteristics = async () => {
       try {
-        const response = await axios.get("https://back-end.topspeed-performance.de/api/characteristics");
+        const response = await axios.get("http://127.0.0.1:8000/api/characteristics");
         setCharacteristics(response.data); // Store the fetched characteristics
       } catch (err) {
         console.error("Error fetching characteristics:", err);
@@ -29,6 +30,30 @@ const AddCharacteristic = () => {
     const file = e.target.files[0];
     if (file) {
       setImage(file); // Set the image file
+      uploadImage(file); // Trigger the image upload
+    }
+  };
+
+  // Upload the image to Cloudinary
+  const uploadImage = async (selectedFile) => {
+    if (!selectedFile) {
+      alert("Please select a file first");
+      return;
+    }
+
+    const formData = new FormData();
+    formData.append("file", selectedFile);
+    formData.append("upload_preset", "vtec-chiptuning"); // Use your preset name here
+
+    try {
+      const res = await axios.post(
+        "https://api.cloudinary.com/v1_1/dd7enl4lj/image/upload",
+        formData
+      );
+      setImageUrl(res.data.secure_url); // Set the image URL after successful upload
+      console.log("Uploaded Image URL:", res.data.secure_url); // Debugging the response
+    } catch (error) {
+      console.error("Error uploading image:", error);
     }
   };
 
@@ -51,18 +76,19 @@ const AddCharacteristic = () => {
     formData.append("name", name);
     formData.append("code", code); // Send the code to backend
 
-    // Send image only if it is selected
-    if (image) {
-      formData.append("image", image); // Send the actual file if selected
+    // Send image URL to backend
+    if (imageUrl) {
+      formData.append("image", imageUrl); // Send the Cloudinary image URL
     } else {
       formData.append("image", null); // Send null if no image
     }
 
     try {
-      const response = await axios.post("https://back-end.topspeed-performance.de/api/add-characteristic", formData);
+      const response = await axios.post("http://127.0.0.1:8000/api/add-characteristic", formData);
       setSuccess("Characteristic added successfully!");
       setName("");
       setImage(null);
+      setImageUrl(""); // Reset the image URL after successful submission
 
       // Update characteristics list
       setCharacteristics([...characteristics, response.data]);
@@ -92,6 +118,18 @@ const AddCharacteristic = () => {
               required
             />
           </div>
+
+          {/* Image Upload Input */}
+          <div className="form-group">
+            <label htmlFor="image">Upload Image</label>
+            <input
+              type="file"
+              id="image"
+              onChange={handleImageChange}
+              className="form-control"
+            />
+          </div>
+
           <button type="submit" className="btn btn-primary">Add Characteristic</button>
         </form>
 
@@ -100,10 +138,7 @@ const AddCharacteristic = () => {
         {characteristics.length > 0 ? (
           <div className="row mt-30 line-height-35">
             {characteristics.map((characteristic) => {
-              const imageSrc = characteristic.image
-                ? `/img/caroptions/${characteristic.image}` // Correct relative path to public folder
-                : "/img/caroptions/default-characteristic.png";
-
+              const imageSrc = characteristic.image;
               return (
                 <div
                   key={characteristic.id}

@@ -17,10 +17,10 @@ const AboutUs2 = () => {
                   </div>
                 </div>
                 <div className="col-md-7 cmd-padding">
-                  <div className="img2 wow imago" data-wow-delay=".3s">
+                  <div className="img2 imago" data-wow-delay=".3s">
                     <img src={AboutUs2Date.image2} alt="" />
                   </div>
-                  <div className="img3 wow imago" data-wow-delay=".8s">
+                  <div className="img3 imago" data-wow-delay=".8s">
                     <img src={AboutUs2Date.image3} alt="" />
                   </div>
                   <div className="container">
@@ -42,14 +42,14 @@ const AboutUs2 = () => {
               </div>
               <Split>
                 <h3
-                  className="words chars splitting main-title wow"
+                  className="words chars splitting main-title "
                   data-splitting
                 >
                   {AboutUs2Date.title.first} <br /> {AboutUs2Date.title.second}
                 </h3>
               </Split>
               <Split>
-                <p className="words chars splitting wow txt" data-splitting>
+                <p className="words chars splitting txt" data-splitting>
                   {AboutUs2Date.content}
                 </p>
               </Split>
