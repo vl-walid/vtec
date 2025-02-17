@@ -18,7 +18,7 @@ const SearchCar = () => {
 
     try {
       const response = await axios.get(
-        "http://127.0.0.1:8000/api/vehicles/search",
+        "https://topseed-performance.de/api/vehicles/search",
         {
           params: { full_name: search },
         }
@@ -35,7 +35,7 @@ const SearchCar = () => {
     try {
       const newStatus = currentStatus ? 0 : 1;  // Toggle the status
       await axios.patch(
-        `http://127.0.0.1:8000/api/vehicles/${vehicleId}/toggle-active`,  // Path with vehicle ID
+        `https://topseed-performance.de/api/vehicles/${vehicleId}/toggle-active`,  // Path with vehicle ID
         {
           vehicle_id: vehicleId,  // Send vehicle_id
           is_active: newStatus,    // Send new is_active status

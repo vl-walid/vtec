@@ -26,7 +26,7 @@ const UploadBlogDetails = ({ id }) => {
     const fetchBlogDetails = async () => {
       try {
         const response = await axios.get(
-          `http://127.0.0.1:8000/api/blog-posts/${id}`
+          `https://topseed-performance.de/api/blog-posts/${id}`
         );
 
         if (response.data) {
@@ -117,8 +117,8 @@ const UploadBlogDetails = ({ id }) => {
     try {
       const response = await axios.post(
         blogExists
-          ? `http://127.0.0.1:8000/api/blog-posts/${id}/update`
-          : "http://127.0.0.1:8000/api/blog-posts-new",
+          ? `https://topseed-performance.de/api/blog-posts/${id}/update`
+          : "https://topseed-performance.de/api/blog-posts-new",
         formData,
         {
           headers: {
@@ -144,7 +144,7 @@ const UploadBlogDetails = ({ id }) => {
   const handleDelete = async () => {
     try {
       const response = await axios.delete(
-        `http://127.0.0.1:8000/api/blog-posts/${id}`
+        `https://topseed-performance.de/api/blog-posts/${id}`
       );
       if (response.status === 200) {
         setMessage("Blog post deleted successfully!");

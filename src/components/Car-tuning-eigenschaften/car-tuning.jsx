@@ -18,7 +18,7 @@ const CarTuning = ({ car_id }) => {
     const fetchTunings = async () => {
       try {
         const response = await axios.get(
-          "http://127.0.0.1:8000/api/vehicle/tuning"
+          "https://topseed-performance.de/api/vehicle/tuning"
         );
         setTunings(response.data);
       } catch (error) {
@@ -35,7 +35,7 @@ const CarTuning = ({ car_id }) => {
       const fetchExistingTunings = async () => {
         try {
           const response = await axios.get(
-            "http://127.0.0.1:8000/api/vehicle/tuning-by-id",
+            "https://topseed-performance.de/api/vehicle/tuning-by-id",
             { params: { vehicle_id: car_id } }
           );
           if (response.data) setExistingTunings(response.data);
@@ -91,7 +91,7 @@ const CarTuning = ({ car_id }) => {
 
     try {
       const response = await axios.post(
-        "http://127.0.0.1:8000/api/vehicle/tuning/add",
+        "https://topseed-performance.de/api/vehicle/tuning/add",
         submissionData
       );
       console.log("databedor", submissionData )

@@ -61,7 +61,7 @@ const AddBlogForm = () => {
 
     try {
       const response = await axios.post(
-        "http://127.0.0.1:8000/api/blog-overview",
+        "https://topseed-performance.de/api/blog-overview",
         formData,
         {
           headers: {

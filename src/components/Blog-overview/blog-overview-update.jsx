@@ -19,7 +19,7 @@ const UpdateBlogOverview = ({ blogId }) => {
     const fetchBlogOverview = async () => {
       try {
         const response = await axios.get(
-          `http://127.0.0.1:8000/api/blog-overview/${blogId}`
+          `https://topseed-performance.de/api/blog-overview/${blogId}`
         );
         setBlogOverview({
           main_title: response.data.main_title,
@@ -71,7 +71,7 @@ const UpdateBlogOverview = ({ blogId }) => {
     e.preventDefault();
 
     try {
-      await axios.put(`http://127.0.0.1:8000/api/blog-overview/${blogId}`, {
+      await axios.put(`https://topseed-performance.de/api/blog-overview/${blogId}`, {
         main_title: blogOverview.main_title,
         main_image: blogOverview.main_image_url, // Send the Cloudinary image URL
       });

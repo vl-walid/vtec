@@ -25,7 +25,7 @@ const CarTuningEigenschaftenID = () => {
     }
 
     try {
-      const response = await fetch('http://127.0.0.1:8000/api/verify', {
+      const response = await fetch('https://topseed-performance.de/api/verify', {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${token}`, 

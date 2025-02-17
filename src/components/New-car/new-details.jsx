@@ -63,7 +63,7 @@ const AddCategoryAndBrand = () => {
   const fetchCategories = async () => {
     try {
       const response = await axios.get(
-        "http://127.0.0.1:8000/api/vehicle/categories"
+        "https://topseed-performance.de/api/vehicle/categories"
       );
       setCategories(response.data);
     } catch (error) {
@@ -83,7 +83,7 @@ const AddCategoryAndBrand = () => {
   const fetchBrands = async (categoryId) => {
     try {
       const response = await axios.get(
-        "http://127.0.0.1:8000/api/vehicle/brands",
+        "https://topseed-performance.de/api/vehicle/brands",
         {
           params: { category_id: categoryId },
         }
@@ -106,7 +106,7 @@ const AddCategoryAndBrand = () => {
   const fetchModels = async (brandId) => {
     try {
       const response = await axios.get(
-        "http://127.0.0.1:8000/api/vehicle/models",
+        "https://topseed-performance.de/api/vehicle/models",
         {
           params: { brand_id: brandId },
         }
@@ -129,7 +129,7 @@ const AddCategoryAndBrand = () => {
   const fetchGenerations = async (modelId) => {
     try {
       const response = await axios.get(
-        "http://127.0.0.1:8000/api/vehicle/generations",
+        "https://topseed-performance.de/api/vehicle/generations",
         {
           params: { model_id: modelId },
         }
@@ -152,7 +152,7 @@ const AddCategoryAndBrand = () => {
   const fetchEngines = async (generationId) => {
     try {
       const response = await axios.get(
-        "http://127.0.0.1:8000/api/vehicle/engines",
+        "https://topseed-performance.de/api/vehicle/engines",
         {
           params: { generation_id: generationId },
         }
@@ -170,7 +170,7 @@ const AddCategoryAndBrand = () => {
     try {
       // Send the request to toggle the active status
       const response = await axios.put(
-        `http://127.0.0.1:8000/api/toggle-active/categories/${categoryId}`
+        `https://topseed-performance.de/api/toggle-active/categories/${categoryId}`
       );
 
       // Get the updated data from the response
@@ -194,7 +194,7 @@ const AddCategoryAndBrand = () => {
   const toggleActiveStatusBrand = async (brandId) => {
     try {
       const response = await axios.put(
-        `http://127.0.0.1:8000/api/toggle-active/brands/${brandId}`
+        `https://topseed-performance.de/api/toggle-active/brands/${brandId}`
       );
       const { updated_brand } = response.data;
 
@@ -219,7 +219,7 @@ const AddCategoryAndBrand = () => {
   const toggleActiveStatusModel = async (modelId) => {
     try {
       const response = await axios.put(
-        `http://127.0.0.1:8000/api/toggle-active/models/${modelId}`
+        `https://topseed-performance.de/api/toggle-active/models/${modelId}`
       );
       const { updated_model } = response.data;
 
@@ -245,7 +245,7 @@ const AddCategoryAndBrand = () => {
   const toggleActiveStatusGeneration = async (generationId) => {
     try {
       const response = await axios.put(
-        `http://127.0.0.1:8000/api/toggle-active/generations/${generationId}`
+        `https://topseed-performance.de/api/toggle-active/generations/${generationId}`
       );
       const { updated_generation } = response.data;
 
@@ -273,7 +273,7 @@ const AddCategoryAndBrand = () => {
   const toggleActiveStatusEngine = async (engineId) => {
     try {
       const response = await axios.put(
-        `http://127.0.0.1:8000/api/toggle-active/engines/${engineId}`
+        `https://topseed-performance.de/api/toggle-active/engines/${engineId}`
       );
       const { updated_engine } = response.data;
 
@@ -313,7 +313,7 @@ const AddCategoryAndBrand = () => {
     try {
       // Send category data including image URL
       const response = await axios.post(
-        "http://127.0.0.1:8000/api/vehicle/categories",
+        "https://topseed-performance.de/api/vehicle/categories",
         {
           category_name: newCategory,
           category_image: imageUrl,
@@ -341,7 +341,7 @@ const AddCategoryAndBrand = () => {
     }
     try {
       const response = await axios.post(
-        "http://127.0.0.1:8000/api/vehicle/brands",
+        "https://topseed-performance.de/api/vehicle/brands",
         {
           brand_name: newBrand,
           category_id: selectedCategory,
@@ -364,7 +364,7 @@ const AddCategoryAndBrand = () => {
     }
     try {
       const response = await axios.post(
-        "http://127.0.0.1:8000/api/vehicle/models",
+        "https://topseed-performance.de/api/vehicle/models",
         {
           model_name: newModel,
           brand_id: selectedBrand,
@@ -387,7 +387,7 @@ const AddCategoryAndBrand = () => {
     }
     try {
       const response = await axios.post(
-        "http://127.0.0.1:8000/api/vehicle/generations",
+        "https://topseed-performance.de/api/vehicle/generations",
         {
           generation_name: newGeneration,
           model_id: selectedModel,
@@ -410,7 +410,7 @@ const AddCategoryAndBrand = () => {
     }
     try {
       const response = await axios.post(
-        "http://127.0.0.1:8000/api/vehicle/engines",
+        "https://topseed-performance.de/api/vehicle/engines",
         {
           engine_name: newEngine,
           generation_id: selectedGeneration,

@@ -20,7 +20,7 @@ const ContactArch = () => {
     setButtonText("Sending..."); // Change button text while sending
 
     try {
-      const response = await fetch("http://127.0.0.1:8000/api/send-partner-request", {
+      const response = await fetch("https://topseed-performance.de/api/send-partner-request", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
