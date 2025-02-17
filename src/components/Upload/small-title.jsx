@@ -13,7 +13,7 @@ const SmallTitleForm = ({ blogPostId }) => {
   useEffect(() => {
     const fetchSmallTitles = async () => {
       try {
-        const response = await axios.get(`https://topseed-performance.de/api/blog-posts/${blogPostId}/small-titles`);
+        const response = await axios.get(`https://topspeed-performance.de/api/blog-posts/${blogPostId}/small-titles`);
         setSmallTitles(response.data);
       } catch (error) {
         console.error("Error fetching small titles:", error);
@@ -36,7 +36,7 @@ const SmallTitleForm = ({ blogPostId }) => {
   const handleAddTitle = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('https://topseed-performance.de/api/small-titles', {
+      const response = await axios.post('https://topspeed-performance.de/api/small-titles', {
         title: newTitle,
         paragraph: newParagraph,
         blog_post_id: blogPostId,
@@ -60,7 +60,7 @@ const SmallTitleForm = ({ blogPostId }) => {
   const handleUpdateItem = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.put(`https://topseed-performance.de/api/small-titles/${editingItem}`, {
+      const response = await axios.put(`https://topspeed-performance.de/api/small-titles/${editingItem}`, {
         title: editingTitle,
         paragraph: editingParagraph,
       });
@@ -76,7 +76,7 @@ const SmallTitleForm = ({ blogPostId }) => {
   // Handle deleting an item
   const handleDeleteItem = async (id) => {
     try {
-      await axios.delete(`https://topseed-performance.de/api/small-titles/${id}`);
+      await axios.delete(`https://topspeed-performance.de/api/small-titles/${id}`);
       setSmallTitles(smallTitles.filter(item => item.id !== id));
     } catch (error) {
       console.error("Error deleting small title:", error);

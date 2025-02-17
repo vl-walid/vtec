@@ -36,7 +36,7 @@ const ContactForm = () => {
     try {
       // Sending data to the backend API
       const response = await axios.post(
-        "https://topseed-performance.de/api/send-contact-message",
+        "https://topspeed-performance.de/api/send-contact-message",
         values
       );
       messageRef.current.innerText =

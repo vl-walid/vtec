@@ -30,7 +30,7 @@ const Cardetailsvg = () => {
     const fetchVehicleDetails = async () => {
       try {
         setLoading(true);
-        const response = await axios.post("https://topseed-performance.de/api/vehicle/details", {
+        const response = await axios.post("https://topspeed-performance.de/api/vehicle/details", {
           vehicle_id: id,
         });
         setVehicleDetails(response.data.vehicle);

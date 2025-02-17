@@ -13,7 +13,7 @@ const BlogList = () => {
   const fetchBlogs = async (page) => {
     try {
       const response = await axios.get(
-        `https://topseed-performance.de/api/blog-overviews?page=${page}`
+        `https://topspeed-performance.de/api/blog-overviews?page=${page}`
       );
       setBlogs(response.data.data); // Assuming the 'data' field contains blog data
       setTotalPages(response.data.last_page); // Assuming 'last_page' field contains total number of pages

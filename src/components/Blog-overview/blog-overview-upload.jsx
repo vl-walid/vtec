@@ -61,7 +61,7 @@ const AddBlogForm = () => {
 
     try {
       const response = await axios.post(
-        "https://topseed-performance.de/api/blog-overview",
+        "https://topspeed-performance.de/api/blog-overview",
         formData,
         {
           headers: {

@@ -14,7 +14,7 @@ const AddCharacteristic = () => {
   useEffect(() => {
     const fetchCharacteristics = async () => {
       try {
-        const response = await axios.get("https://topseed-performance.de/api/characteristics");
+        const response = await axios.get("https://topspeed-performance.de/api/characteristics");
         setCharacteristics(response.data); // Store the fetched characteristics
       } catch (err) {
         console.error("Error fetching characteristics:", err);
@@ -84,7 +84,7 @@ const AddCharacteristic = () => {
     }
 
     try {
-      const response = await axios.post("https://topseed-performance.de/api/add-characteristic", formData);
+      const response = await axios.post("https://topspeed-performance.de/api/add-characteristic", formData);
       setSuccess("Characteristic added successfully!");
       setName("");
       setImage(null);

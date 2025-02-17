@@ -17,7 +17,7 @@ const BlogDetails = ({ id }) => {
       if (!postId) return; // Prevent API call if id is not available
       try {
         const response = await axios.get(
-          `https://topseed-performance.de/api/blog-post-details/${postId}`
+          `https://topspeed-performance.de/api/blog-post-details/${postId}`
         );
         setBlogPostData(response.data);
       } catch (err) {

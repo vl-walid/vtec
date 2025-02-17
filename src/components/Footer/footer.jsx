@@ -13,7 +13,7 @@ const Footer = ({ hideBGCOLOR }) => {
   useEffect(() => {
     const fetchRecentNews = async () => {
       try {
-        const response = await axios.get('https://topseed-performance.de/api/blog-overviews/latest');
+        const response = await axios.get('https://topspeed-performance.de/api/blog-overviews/latest');
         setRecentNews(response.data);
       } catch (error) {
         console.error("Error fetching recent news:", error);

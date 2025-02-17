@@ -33,7 +33,7 @@ const MyCar = () => {
     useEffect(() => {
       const fetchCategories = async () => {
         try {
-          const response = await axios.get("https://topseed-performance.de/api/vehicle/categories-activate");
+          const response = await axios.get("https://topspeed-performance.de/api/vehicle/categories-activate");
           const data = response.data;
   
           // Define the custom order for categories
@@ -76,7 +76,7 @@ const MyCar = () => {
         try {
           setIsLoading(true);
           const response = await axios.get(
-            "https://topseed-performance.de/api/vehicle/brands-activate",
+            "https://topspeed-performance.de/api/vehicle/brands-activate",
             {
               params: { category_id: selectedCategory },
             }
@@ -103,7 +103,7 @@ const MyCar = () => {
         try {
           setIsLoading(true);
           const response = await axios.get(
-            "https://topseed-performance.de/api/vehicle/models-activate",
+            "https://topspeed-performance.de/api/vehicle/models-activate",
             {
               params: { brand_id: selectedBrand },
             }
@@ -130,7 +130,7 @@ const MyCar = () => {
         try {
           setIsLoading(true);
           const response = await axios.get(
-            `https://topseed-performance.de/api/vehicle/generations-activate`,
+            `https://topspeed-performance.de/api/vehicle/generations-activate`,
             {
               params: { model_id: selectedModel },
             }
@@ -157,7 +157,7 @@ const MyCar = () => {
         try {
           setIsLoading(true);
           const response = await axios.get(
-            `https://topseed-performance.de/api/vehicle/engines-activate`,
+            `https://topspeed-performance.de/api/vehicle/engines-activate`,
             {
               params: { generation_id: selectedGeneration },
             }
@@ -184,7 +184,7 @@ const MyCar = () => {
         try {
           setIsLoading(true);
           const response = await axios.get(
-            "https://topseed-performance.de/api/vehicle/ecus-activate", // Endpoint to fetch vehicles by engine ID
+            "https://topspeed-performance.de/api/vehicle/ecus-activate", // Endpoint to fetch vehicles by engine ID
             {
               params: { engine_id: selectedEngine },
             }

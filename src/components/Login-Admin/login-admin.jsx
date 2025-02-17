@@ -12,7 +12,7 @@ const LoginAdmin = () => {
     try {
       console.log('Form Data:', values);
 
-      const response = await axios.post("https://topseed-performance.de/api/login", {
+      const response = await axios.post("https://topspeed-performance.de/api/login", {
         email: values.email,
         password: values.password,
         admin_code: values.admin_code,

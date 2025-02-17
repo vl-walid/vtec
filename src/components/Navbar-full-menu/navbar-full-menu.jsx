@@ -37,7 +37,7 @@ const NavbarFullMenu = ({ theme }) => {
       }
 
       const response = await axios.post(
-        "https://topseed-performance.de/api/logout",
+        "https://topspeed-performance.de/api/logout",
         {},
         {
           headers: { Authorization: `Bearer ${token}` },

@@ -13,7 +13,7 @@ const MyBlogList = () => {
   const fetchBlogs = async (page) => {
     try {
       const response = await axios.get(
-        `https://topseed-performance.de/api/blog-overviews?page=${page}`
+        `https://topspeed-performance.de/api/blog-overviews?page=${page}`
       );
       setBlogs(response.data.data); // Assuming the 'data' field contains blog data
       setTotalPages(response.data.last_page); // Assuming 'last_page' field contains total number of pages
@@ -25,7 +25,7 @@ const MyBlogList = () => {
   // Function to delete a blog overview
   const deleteBlogOverview = async (id) => {
     try {
-      await axios.delete(`https://topseed-performance.de/api/blog-overview/${id}`);
+      await axios.delete(`https://topspeed-performance.de/api/blog-overview/${id}`);
       // Refresh the list after deletion
       setBlogs(blogs.filter((blogItem) => blogItem.id !== id));
       alert("Blog overview deleted successfully");
