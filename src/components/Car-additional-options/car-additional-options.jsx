@@ -27,43 +27,39 @@ const CarAdditionalOptions = ({ additionalOptions }) => {
     }
   }, [vehicleId, tuningIds]);
 
-
   const hasCharacteristics = characteristics.some(option => option.characteristics.length > 0);
 
   return (
-    <section className="sub-bg">
-      <div className="container">
-        <div className="row">
+    <section className="d-flex justify-content-center align-items-center vh-100">
+      <div className="container text-center">
+        <div className="row ml-50">
           <h3>Zus&#228;tzliche Optionen</h3>
         </div>
         <div className="row mt-30 line-height-35">
           {characteristics && characteristics.length > 0 ? (
-            characteristics.map((option, index) => ( // Use index to correlate with tuningNames
+            characteristics.map((option, index) => (
               <div key={option.vehicle_tuning_id} className="col-12">
-                <h4 className="mb-3">Tuning Stage: {tuningNames[index]}</h4> {/* Display tuning stage instead of ID */}
-                <div className="row mx-auto">
+                <h4 className="mb-3">Tuning Stage: {tuningNames[index]}</h4>
+                <div className="row justify-content-center">
                   {option.characteristics.map((characteristic) => {
-                    // Check if image is null or undefined, then use default image
                     const imageSrc = characteristic.image;
-
                     return (
                       <div
                         key={characteristic.id}
-                        className="col-lg-3 col-md-4 col-10 mb-3 ml-3 mr-5 p-1 d-flex align-items-center butn curve"
-                        style={{ backgroundColor: "#2b2d42", color: "white" }}
+                        className="col-lg-3 col-md-4 col-10 mb-4 p-3 d-flex align-items-center justify-content-center butn curve"
+                        style={{ backgroundColor: "#2b2d42", color: "white", margin: "10px" }}
                       >
-                        <div className="">
-                          {/* Replace <img> with <Image> */}
+                        <div className="text-center">
                           <Image
                             src={imageSrc}
                             alt={characteristic.name}
-                            width={200}  // Adjust the width as needed
-                            height={200} // Adjust the height as needed
+                            width={200}
+                            height={200}
                             className="img-fluid"
                           />
-                        </div>
-                        <div className="ml-3">
-                          <span>{characteristic.name}</span>
+                          <div className="mt-2">
+                            <span>{characteristic.name}</span>
+                          </div>
                         </div>
                       </div>
                     );

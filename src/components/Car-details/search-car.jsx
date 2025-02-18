@@ -33,15 +33,15 @@ const SearchCar = () => {
 
   const handleToggleActiveStatus = async (vehicleId, currentStatus) => {
     try {
-      const newStatus = currentStatus ? 0 : 1;  // Toggle the status
+      const newStatus = currentStatus ? 0 : 1; // Toggle the status
       await axios.patch(
-        `https://topspeed-performance.de/api/vehicles/${vehicleId}/toggle-active`,  // Path with vehicle ID
+        `https://topspeed-performance.de/api/vehicles/${vehicleId}/toggle-active`, // Path with vehicle ID
         {
-          vehicle_id: vehicleId,  // Send vehicle_id
-          is_active: newStatus,    // Send new is_active status
+          vehicle_id: vehicleId, // Send vehicle_id
+          is_active: newStatus, // Send new is_active status
         }
       );
-  
+
       // Update the vehicle list with the new status
       setVehicles((prevVehicles) =>
         prevVehicles.map((vehicle) =>
@@ -54,7 +54,6 @@ const SearchCar = () => {
       console.error("Error toggling vehicle status:", error);
     }
   };
-  
 
   return (
     <div className="container my-5">
@@ -132,8 +131,7 @@ const SearchCar = () => {
                     <strong>RPM:</strong> {vehicle.rpm}
                   </p>
                   <p className="card-text">
-                    <strong>OEM Power Chart:</strong>{" "}
-                    {vehicle.oem_power_chart}
+                    <strong>OEM Power Chart:</strong> {vehicle.oem_power_chart}
                   </p>
                   <p className="card-text">
                     <strong>OEM Torque Chart:</strong>{" "}
@@ -146,8 +144,7 @@ const SearchCar = () => {
                     <strong>Updated At:</strong> {vehicle.updated_at}
                   </p>
                   <p className="card-text">
-                    <strong>Active:</strong>{" "}
-                    {vehicle.is_active ? "Yes" : "No"}
+                    <strong>Active:</strong> {vehicle.is_active ? "Yes" : "No"}
                   </p>
 
                   {/* Toggle Button */}
@@ -169,12 +166,19 @@ const SearchCar = () => {
 
                   <div className="d-flex justify-content-between mt-3">
                     <a
-                      href={`/chiptuning/${vehicle.id}`}
+                      href={
+                        vehicle.full_name
+                          ? `/chiptuning/${encodeURIComponent(
+                              vehicle.full_name.replace(/\s+/g, "-")
+                            )}?id=${vehicle.id}`
+                          : "#"
+                      }
                       className="btn btn-outline-danger btn-sm"
                       style={{ borderColor: "red", color: "red" }}
                     >
                       Details ansehen
                     </a>
+
                     <a
                       href={`/admin/car/car-tuning/${vehicle.id}`}
                       className="btn btn-danger btn-sm"
