@@ -2,8 +2,6 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useRouter } from "next/router"; // Import useRouter for navigation
 import Link from "next/link";
-import Image from "next/image";
-
 
 const MyCar = () => {
   const router = useRouter(); // Initialize useRouter for navigation
@@ -29,46 +27,53 @@ const MyCar = () => {
     selectedGeneration &&
     selectedEngine &&
     selectedEcu;
-    // Fetch Categories
-    useEffect(() => {
-      const fetchCategories = async () => {
-        try {
-          const response = await axios.get("https://topspeed-performance.de/api/vehicle/categories-activate");
-          const data = response.data;
-  
-          // Define the custom order for categories
-          const customOrder = [
-            "Autos", "LKW", "Transporter", "Pick-ups", "Wohnmobile", "Traktoren"
-          ];
-  
-          // First, map the categories in the custom order if they exist in the fetched data
-          const orderedCategories = customOrder
-            .map(categoryName => 
-              data.find(category => category.category_name === categoryName)
-            )
-            .filter(Boolean); // Filter out undefined if any categories are missing
-  
-          // Then, find any categories that weren't in the custom order
-          const remainingCategories = data.filter(category => 
-            !customOrder.includes(category.category_name)
-          );
-  
-          // Concatenate both arrays: ordered categories first, followed by the remaining categories
-          const finalCategories = [...orderedCategories, ...remainingCategories];
-  
-          setCategories(finalCategories); // Update state with the final ordered categories
-        } catch (error) {
-          console.error("Error fetching categories:", error);
-        } finally {
-          setIsLoading(false);
-        }
-      };
-  
-      fetchCategories();
-    }, []);
-    const handleCategoryChange = (categoryId) => {
-      setSelectedCategory(categoryId);
+  // Fetch Categories
+  useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        const response = await axios.get(
+          "https://topspeed-performance.de/api/vehicle/categories-activate"
+        );
+        const data = response.data;
+
+        // Define the custom order for categories
+        const customOrder = [
+          "Autos",
+          "LKW",
+          "Transporter",
+          "Pick-ups",
+          "Wohnmobile",
+          "Traktoren",
+        ];
+
+        // First, map the categories in the custom order if they exist in the fetched data
+        const orderedCategories = customOrder
+          .map((categoryName) =>
+            data.find((category) => category.category_name === categoryName)
+          )
+          .filter(Boolean); // Filter out undefined if any categories are missing
+
+        // Then, find any categories that weren't in the custom order
+        const remainingCategories = data.filter(
+          (category) => !customOrder.includes(category.category_name)
+        );
+
+        // Concatenate both arrays: ordered categories first, followed by the remaining categories
+        const finalCategories = [...orderedCategories, ...remainingCategories];
+
+        setCategories(finalCategories); // Update state with the final ordered categories
+      } catch (error) {
+        console.error("Error fetching categories:", error);
+      } finally {
+        setIsLoading(false);
+      }
     };
+
+    fetchCategories();
+  }, []);
+  const handleCategoryChange = (categoryId) => {
+    setSelectedCategory(categoryId);
+  };
   // Fetch Brands based on selected Category
   useEffect(() => {
     const fetchBrands = async () => {
@@ -81,10 +86,13 @@ const MyCar = () => {
               params: { category_id: selectedCategory },
             }
           );
-      
+
           setBrands(response.data);
         } catch (error) {
-          console.error("Error fetching brands:", error.response ? error.response.data : error);
+          console.error(
+            "Error fetching brands:",
+            error.response ? error.response.data : error
+          );
         } finally {
           setIsLoading(false);
         }
@@ -108,10 +116,13 @@ const MyCar = () => {
               params: { brand_id: selectedBrand },
             }
           );
-          
+
           setModels(response.data);
         } catch (error) {
-          console.error("Error fetching models:", error.response ? error.response.data : error);
+          console.error(
+            "Error fetching models:",
+            error.response ? error.response.data : error
+          );
         } finally {
           setIsLoading(false);
         }
@@ -135,10 +146,13 @@ const MyCar = () => {
               params: { model_id: selectedModel },
             }
           );
-       
+
           setGenerations(response.data);
         } catch (error) {
-          console.error("Error fetching generations:", error.response ? error.response.data : error);
+          console.error(
+            "Error fetching generations:",
+            error.response ? error.response.data : error
+          );
         } finally {
           setIsLoading(false);
         }
@@ -162,10 +176,13 @@ const MyCar = () => {
               params: { generation_id: selectedGeneration },
             }
           );
-         
+
           setEngines(response.data);
         } catch (error) {
-          console.error("Error fetching engines:", error.response ? error.response.data : error);
+          console.error(
+            "Error fetching engines:",
+            error.response ? error.response.data : error
+          );
         } finally {
           setIsLoading(false);
         }
@@ -192,7 +209,10 @@ const MyCar = () => {
           const sortedEcUs = response.data; // Assume the response is already sorted
           setEcUs(sortedEcUs);
         } catch (error) {
-          console.error("Error fetching ECUs:", error.response ? error.response.data : error);
+          console.error(
+            "Error fetching ECUs:",
+            error.response ? error.response.data : error
+          );
         } finally {
           setIsLoading(false);
         }
@@ -252,13 +272,13 @@ const MyCar = () => {
     }
   };
 
-
-
-
   return (
-    <section className="call-action section-padding sub-bg bg-img" style={{ backgroundImage: `url("/img/patrn.svg")`, marginTop: "-100px" }}>
+    <section
+      className="call-action section-padding sub-bg bg-img pt-100"
+      style={{ backgroundImage: `url("/img/patrn.svg")`, marginTop: "-100px" }}
+    >
       <div className="container">
-        <div className="row">
+        <div className="row ">
           <div className="col-md-8 col-lg-9">
             <div className="content sm-mb30">
               <h2 className="color-font">
@@ -267,134 +287,137 @@ const MyCar = () => {
             </div>
           </div>
         </div>
-   
-
-        <div className="row">
-          {categories.map((category) => (
-            <div key={category.id} className="col-sm-6 col-md-4 col-lg-2 valign mb-5 mt-5">
-              <div className="d-flex flex-column align-items-center">
-                <Image
-                  src={category.category_image} // Use category_image from the API response
-                  alt={`${category.category_name} Icon`}
-                  className="img-fluid"
-                  width={75} 
-                  height={75} 
-                />
-                <div
-                  className={`butn bord curve wow fadeInUp ${selectedCategory === category.id ? "selected" : ""}`}
-                  data-wow-delay=".5s"
-                  onClick={() => handleCategoryChange(category.id)} // Set selected category
-                >
-                  <span>{category.category_name}</span> {/* Display the category name directly */}
-                </div>
-              </div>
+        <div className="d-flex justify-content-center align-items-center min-vh-100 margincar">
+          <div className="row mt-40 justify-content-center text-center">
+            <div className="col-lg-4 col-md-6 col-12 mb-3 position-relative">
+              <select
+                className="form-select border-radius-custom"
+                value={selectedCategory || ""}
+                onChange={(e) => setSelectedCategory(e.target.value)}
+              >
+                <option value="" disabled selected hidden>
+                  Kategorie auswählen
+                </option>
+                {categories.map((category) => (
+                  <option key={category.id} value={category.id}>
+                    {category.category_name}
+                  </option>
+                ))}
+              </select>
             </div>
-          ))}
-        </div>
 
-        <div className="row mt-40">
-          <div className="col-lg-4 col-md-6 col-12 mb-3 position-relative">
-            <select
-              className="form-select border-radius-custom"
-              value={selectedBrand || ""}
-              onChange={handleBrandChange}
-              disabled={!selectedCategory}
-            >
-              <option value="" disabled selected hidden>
-                Marke ausw&auml;hlen
-              </option>
-              {brands.map((brand) => (
-                <option key={brand.id} value={brand.id}>
-                  {brand.name}
+            <div className="col-lg-4 col-md-6 col-12 mb-3 position-relative">
+              <select
+                className="form-select border-radius-custom"
+                value={selectedBrand || ""}
+                onChange={handleBrandChange}
+                disabled={!selectedCategory}
+              >
+                <option value="" disabled selected hidden>
+                  Marke auswählen
                 </option>
-              ))}
-            </select>
-          </div>
+                {brands.map((brand) => (
+                  <option key={brand.id} value={brand.id}>
+                    {brand.name}
+                  </option>
+                ))}
+              </select>
+            </div>
 
-          {/* Model Selection */}
-          <div className="col-lg-4 col-md-6 col-12 mb-3 position-relative">
-            <select
-              className="form-select border-radius-custom"
-              value={selectedModel || ""}
-              onChange={handleModelChange}
-              disabled={!selectedBrand}
-            >
-              <option value="" disabled selected hidden>
-                Modell ausw&auml;hlen
-              </option>
-              {models.map((model) => (
-                <option key={model.id} value={model.id}>
-                  {model.name}
+            {/* Model Selection */}
+            <div className="col-lg-4 col-md-6 col-12 mb-3 position-relative">
+              <select
+                className="form-select border-radius-custom"
+                value={selectedModel || ""}
+                onChange={handleModelChange}
+                disabled={!selectedBrand}
+              >
+                <option value="" disabled selected hidden>
+                  Modell auswählen
                 </option>
-              ))}
-            </select>
-          </div>
+                {models.map((model) => (
+                  <option key={model.id} value={model.id}>
+                    {model.name}
+                  </option>
+                ))}
+              </select>
+            </div>
 
-          {/* Generation Selection */}
-          <div className="col-lg-4 col-md-6 col-12 mb-3 position-relative">
-            <select
-              className="form-select border-radius-custom"
-              value={selectedGeneration || ""}
-              onChange={handleGenerationChange}
-              disabled={!selectedModel}
-            >
-              <option value="" disabled selected hidden>
-                Generation ausw&auml;hlen
-              </option>
-              {generations.map((generation) => (
-                <option key={generation.id} value={generation.id}>
-                  {generation.name}
+            {/* Generation Selection */}
+            <div className="col-lg-4 col-md-6 col-12 mb-3 position-relative">
+              <select
+                className="form-select border-radius-custom"
+                value={selectedGeneration || ""}
+                onChange={handleGenerationChange}
+                disabled={!selectedModel}
+              >
+                <option value="" disabled selected hidden>
+                  Generation auswählen
                 </option>
-              ))}
-            </select>
-          </div>
+                {generations.map((generation) => (
+                  <option key={generation.id} value={generation.id}>
+                    {generation.name}
+                  </option>
+                ))}
+              </select>
+            </div>
 
-          {/* Engine Selection */}
-          <div className="col-lg-4 col-md-6 col-12 mb-3 position-relative">
-            <select
-              className="form-select border-radius-custom"
-              value={selectedEngine || ""}
-              onChange={handleEngineChange}
-              disabled={!selectedGeneration}
-            >
-              <option value="" disabled selected hidden>
-                Motor ausw&auml;hlen
-              </option>
-              {engines.map((engine) => (
-                <option key={engine.id} value={engine.id}>
-                  {engine.name}
+            {/* Engine Selection */}
+            <div className="col-lg-4 col-md-6 col-12 mb-3 position-relative">
+              <select
+                className="form-select border-radius-custom"
+                value={selectedEngine || ""}
+                onChange={handleEngineChange}
+                disabled={!selectedGeneration}
+              >
+                <option value="" disabled selected hidden>
+                  Motor auswählen
                 </option>
-              ))}
-            </select>
-          </div>
+                {engines.map((engine) => (
+                  <option key={engine.id} value={engine.id}>
+                    {engine.name}
+                  </option>
+                ))}
+              </select>
+            </div>
 
-          {/* ECU Selection */}
-          <div className="col-lg-4 col-md-6 col-12 mb-3 position-relative">
-            <select
-              className="form-select border-radius-custom"
-              value={selectedEcu || ""}
-              onChange={handleEcuChange}
-              disabled={!selectedEngine || ecus.length === 0}
-            >
-              <option value="" disabled selected hidden>
-                ECU ausw&auml;hlen
-              </option>
-              {ecus.map((ecu) => (
-                <option key={ecu.id} value={ecu.id}>
-                  {ecu.ecu} {/* Assuming ECU object has full_name */}
+            {/* ECU Selection */}
+            <div className="col-lg-4 col-md-6 col-12 mb-3 position-relative">
+              <select
+                className="form-select border-radius-custom"
+                value={selectedEcu || ""}
+                onChange={handleEcuChange}
+                disabled={!selectedEngine || ecus.length === 0}
+              >
+                <option value="" disabled selected hidden>
+                  ECU auswählen
                 </option>
-              ))}
-            </select>
+                {ecus.map((ecu) => (
+                  <option key={ecu.id} value={ecu.id}>
+                    {ecu.ecu} {/* Assuming ECU object has full_name */}
+                  </option>
+                ))}
+              </select>
+            </div>
           </div>
         </div>
 
         {/* Button to go to car details */}
         <div className="row">
           <div className="col-md-12 text-center">
-          <Link legacyBehavior href={`/chiptuning/${selectedCar ? selectedCar.id : ''}`}>
+          <Link
+  legacyBehavior
+  href={
+    selectedCar && selectedCar.full_name
+      ? `/chiptuning/${encodeURIComponent(selectedCar.full_name.replace(/\s+/g, '-'))}?id=${selectedCar.id}`
+      : '#'
+  }
+>
               <a
-                className={`butn dark ${!isSelectionComplete ? "disabled" : ""}`}
-                style={{ pointerEvents: isSelectionComplete ? 'auto' : 'none' }} // Disable link if selection is incomplete
+                className={`butn dark ${
+                  !isSelectionComplete ? "disabled" : ""
+                }`}
+                style={{ pointerEvents: isSelectionComplete ? "auto" : "none" }} // Disable link if selection is incomplete
               >
                 <span>Go to Car Details</span>
               </a>

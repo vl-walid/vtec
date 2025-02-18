@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import React from 'react'
+import React from "react";
 
 const PagesHeader = () => {
   return (
@@ -8,10 +8,10 @@ const PagesHeader = () => {
         <div className="row justify-content-center">
           <div className="col-lg-10">
             <div className="cont mt-100 mb-50 text-center">
-            <h2 className="color-font fw-700">
-  Bei VTEC-Chiptuning bietet ein erfahrenes Team ma&szlig;geschneiderte L&ouml;sungen f&uuml;r die Optimierung Ihres Fahrzeugs.
-</h2>
-
+              <h2 className="color-font fw-700">
+                VTEC-Chiptuning bietet Ihnen ma&szlig;geschneiderte
+                L&ouml;sungen zur Optimierung Ihres Fahrzeuges.
+              </h2>
             </div>
           </div>
           <div className="col-lg-10">

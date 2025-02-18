@@ -1,10 +1,9 @@
 import React from "react";
 import Split from "../Split";
-import AboutInfo1Data from "../../data/sections/about-info1.json";
 
 const AboutIntro = () => {
   return (
-    <section className="intro-section section-padding pb-0">
+    <section className="intro-section mt-10 pb-0">
       <div className="container">
         <div className="row">
           <div className="col-lg-3 col-md-4">

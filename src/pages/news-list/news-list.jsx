@@ -36,7 +36,7 @@ const BlogListLight = () => {
       <PageHeader
         className="sub-bg"
         title="Unsere Neuigkeiten."
-        paragraph="Alle aktuellen Nachrichten und Veranstaltungen unseres kreativen Teams."
+        paragraph="Alle aktuellen Nachrichten und Entwicklungen."
       />
       <BlogListed />
       <Footer />

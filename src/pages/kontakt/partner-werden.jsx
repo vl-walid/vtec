@@ -4,15 +4,9 @@ import Intro2 from "../../components/Intro2/intro2";
 import ContactArch from "../../components/Contact-arch/contact-arch";
 import ProjectDescription from "../../components/Project-description/project-description";
 import ProjectIntroduction from "../../components/Project-introduction/project-introduction";
-import Services from "../../components/Services/services";
-import Video2 from "../../components/Video2/video2";
-import CallToAction from "../../components/Call-to-action/call-to-action";
 import Footer from "../../components/Footer/footer";
 import LightTheme from "../../layouts/Light";
-import Portfolio from "../../components/Portfolio/portfolio";
-import FullTestimonials from "../../components/Full-testimonials/full-testimonials";
-import Team2 from "../../components/Team2/team2";
-import Blogs2 from "../../components/blogs/Blogs2/blogs2";
+
 
 const PartnerWerden = () => {
   const navbarRef = React.useRef(null);

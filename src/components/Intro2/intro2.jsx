@@ -9,7 +9,7 @@ const Intro2 = ({ sliderRef }) => {
         <div className="row">
           <div className="col-lg-6 valign">
             <div className="cont md-mb50">
-              <div className="sub-title mb-5">
+              <div className="sub-title mb-20 mt-30">
                 <h6>Partner werden im Automotive Tuning </h6>
               </div>
               <h1 className="mb-10 fw-600">Erfolg im Tuning.</h1>

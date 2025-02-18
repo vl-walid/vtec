@@ -27,16 +27,8 @@ const CarAdditionalOptions = ({ additionalOptions }) => {
     }
   }, [vehicleId, tuningIds]);
 
-  if (error) {
-    return <div>{error}</div>; // Simple error handling
-  }
 
-  // Check if the characteristics array is empty for all tuning stages
   const hasCharacteristics = characteristics.some(option => option.characteristics.length > 0);
-
-  if (!hasCharacteristics) {
-    return null; // Do not render the component if there are no characteristics
-  }
 
   return (
     <section className="sub-bg">

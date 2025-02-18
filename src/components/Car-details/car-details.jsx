@@ -124,7 +124,7 @@ const CarDetails = ({ vehicleDetails, vehicleTuning }) => {
                     Drehmoment (Nm)
                   </th>
                   <td style={{ backgroundColor: "#e0e0e0", color: "#000000" }}>
-                    {vehicleDetails?.standard_torque || "Loading..."}
+                    {vehicleDetails?.standard_torque || "-"}
                   </td>
                   {tuningData.map((tuning, index) => (
                     <td
